@@ -113,6 +113,21 @@ function App() {
     else setReviewPhase("done");
   }
 
+  // ── ONBOARDING (first-time intro) ────────────────────────────────────────
+  if (!progress.onboarded) {
+    return (
+      <div className="app-wrap">
+        <div className="card w-560" style={{marginTop:"10vh"}}>
+          <div className="home-title">स्वागत है! 🌊</div>
+          <p className="intro-text">यह app आपको Hindi से Konkani सीखने में मदद करेगा — हर दिन सिर्फ़ 5 नए शब्द।</p>
+          <p className="intro-text">हर lesson के बाद एक छोटा quiz होता है, और सीखे हुए शब्द अपने आप spaced repetition में जुड़ जाते हैं — ताकि आप उन्हें भूलें नहीं।</p>
+          <p className="intro-text">Google से sign in करें तो आपकी progress सभी devices पर automatically sync हो जाएगी।</p>
+          <button className="btn btn-primary" onClick={()=>saveProgress({...progress, onboarded:true})}>चलिए शुरू करें →</button>
+        </div>
+      </div>
+    );
+  }
+
   // ── HOME ────────────────────────────────────────────────────────────────
   if (screen === "home") {
     return (
