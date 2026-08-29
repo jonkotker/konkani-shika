@@ -253,3 +253,38 @@ function getDueWords(progress) {
   });
   return due;
 }
+
+// ─── Typed-recall matching (Roman transliteration, tolerant of minor typos) ─
+function normalizeRoman(s) {
+  return s.toLowerCase().replace(/[^a-z\s]/g, "").replace(/\s+/g, " ").trim();
+}
+
+function levenshtein(a, b) {
+  const m = a.length, n = b.length;
+  if (m === 0) return n;
+  if (n === 0) return m;
+  let prev = Array(n + 1).fill(0).map((_, j) => j);
+  for (let i = 1; i <= m; i++) {
+    const cur = [i];
+    for (let j = 1; j <= n; j++) {
+      cur[j] = a[i - 1] === b[j - 1]
+        ? prev[j - 1]
+        : 1 + Math.min(prev[j - 1], prev[j], cur[j - 1]);
+    }
+    prev = cur;
+  }
+  return prev[n];
+}
+
+// romanField may contain alternates separated by "/" (e.g. "Baaba / Paay").
+// Matches if the input is close to ANY alternate, allowing small typos.
+function matchesRoman(input, romanField) {
+  const normInput = normalizeRoman(input);
+  if (!normInput) return false;
+  const alts = romanField.split("/").map(s => normalizeRoman(s)).filter(Boolean);
+  return alts.some(alt => {
+    if (normInput === alt) return true;
+    const tolerance = Math.max(1, Math.floor(alt.length * 0.25));
+    return levenshtein(normInput, alt) <= tolerance;
+  });
+}
