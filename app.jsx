@@ -51,6 +51,11 @@ function App() {
   const [quizIdx, setQuizIdx] = React.useState(0);
   const [chosen, setChosen] = React.useState(null);
   const [score, setScore] = React.useState(0);
+  const [typeIdx, setTypeIdx] = React.useState(0);
+  const [typedValue, setTypedValue] = React.useState("");
+  const [typeSubmitted, setTypeSubmitted] = React.useState(false);
+  const [typeCorrect, setTypeCorrect] = React.useState(false);
+  const [typeResults, setTypeResults] = React.useState([]);
 
   const done = Object.keys(progress).length;
 
@@ -59,8 +64,31 @@ function App() {
     setDayIdx(i);setPhase("intro");setWordIdx(0);setFlipped(false);
     setShuffledQuiz(shuffleQuiz(LESSONS[i].quiz));
     setQuizIdx(0);setChosen(null);setScore(0);setScreen("lesson");
+    setTypeIdx(0);setTypedValue("");setTypeSubmitted(false);setTypeCorrect(false);setTypeResults([]);
   }
   function answerQ(i) { if(chosen!==null)return; setChosen(i); }
+  function checkTyped() {
+    const L=LESSONS[dayIdx];
+    const w=L.words[typeIdx];
+    const correct = matchesRoman(typedValue, w.roman);
+    setTypeCorrect(correct);
+    setTypeSubmitted(true);
+    setTypeResults(r => [...r, correct]);
+  }
+  function nextTyped() {
+    const L=LESSONS[dayIdx];
+    if (typeIdx < L.words.length - 1) {
+      setTypeIdx(i => i + 1);
+      setTypedValue("");
+      setTypeSubmitted(false);
+      setTypeCorrect(false);
+    } else {
+      setPhase("quiz");
+      setQuizIdx(0);
+      setScore(0);
+      setChosen(null);
+    }
+  }
   function saveProgress(newP) {
     try { localStorage.setItem("konkani-progress", JSON.stringify(newP)); } catch(e) {}
     setProgress(newP);
@@ -276,7 +304,7 @@ function App() {
 
   // ── LESSON ──────────────────────────────────────────────────────────────
   const L=LESSONS[dayIdx], W=L.words[wordIdx], Q=(shuffledQuiz.length?shuffledQuiz:L.quiz)[quizIdx];
-  const phases=["intro","learn","quiz","result"], pi=phases.indexOf(phase);
+  const phases=["intro","learn","type","quiz","result"], pi=phases.indexOf(phase);
   const fs=progress[dayIdx]?.score??score;
 
   return (
@@ -329,11 +357,51 @@ function App() {
         </div>}
         <div className="btn-row">
           {wordIdx>0&&<button className="btn btn-ghost btn--auto" onClick={()=>{setWordIdx(i=>i-1);setFlipped(false);}}>पिछला</button>}
-          <button className="btn btn-primary" style={{flex:1}} onClick={()=>{setFlipped(false);if(wordIdx<L.words.length-1)setWordIdx(i=>i+1);else{setPhase("quiz");setQuizIdx(0);setScore(0);setChosen(null);}}}>
-            {wordIdx<L.words.length-1?"अगला शब्द":"Quiz शुरू करें"}
+          <button className="btn btn-primary" style={{flex:1}} onClick={()=>{setFlipped(false);if(wordIdx<L.words.length-1)setWordIdx(i=>i+1);else{setPhase("type");setTypeIdx(0);setTypedValue("");setTypeSubmitted(false);setTypeCorrect(false);setTypeResults([]);}}}>
+            {wordIdx<L.words.length-1?"अगला शब्द":"लिखने का अभ्यास करें"}
           </button>
         </div>
       </div>}
+
+      {phase==="type"&&(() => {
+        const tw = L.words[typeIdx];
+        return <div className="card w-560">
+          <div className="label-caps" style={{display:"flex",justifyContent:"space-between",marginBottom:18}}>
+            <span>लिखने का अभ्यास</span>
+            <span className="label-value">{typeIdx+1} / {L.words.length}</span>
+          </div>
+          <div className="flip-front-text" style={{marginBottom:6}}>{tw.hindi}</div>
+          <div className="flip-front-hint" style={{marginBottom:16}}>इसे Konkani में Roman letters में टाइप करें</div>
+          <input
+            type="text"
+            value={typedValue}
+            disabled={typeSubmitted}
+            onChange={e=>setTypedValue(e.target.value)}
+            onKeyDown={e=>{if(e.key==="Enter"&&!typeSubmitted&&typedValue.trim())checkTyped();}}
+            placeholder="जैसे: Dev Barem Karum"
+            className="text-input"
+            autoFocus
+          />
+          {typeSubmitted && (
+            <div className={"info-box " + (typeCorrect?"info-box--blue":"info-box--orange")} style={{marginTop:16}}>
+              <div className={"info-box-label " + (typeCorrect?"info-box-label--blue":"info-box-label--orange")}>
+                {typeCorrect?"✅ बिलकुल सही!":"❌ सही जवाब देखें"}
+              </div>
+              <div className="flip-back-text accent-orange" style={{textAlign:"left",marginBottom:4}}>{tw.konkani}</div>
+              <div className={"info-box-text " + (typeCorrect?"info-box-text--blue":"info-box-text--orange")}>{tw.roman}</div>
+            </div>
+          )}
+          <div className="btn-row" style={{marginTop:16}}>
+            {!typeSubmitted ? (
+              <button className="btn btn-primary" style={{flex:1}} disabled={!typedValue.trim()} onClick={checkTyped}>जाँचें</button>
+            ) : (
+              <button className="btn btn-primary" style={{flex:1}} onClick={nextTyped}>
+                {typeIdx<L.words.length-1?"अगला शब्द":"Quiz शुरू करें"}
+              </button>
+            )}
+          </div>
+        </div>;
+      })()}
 
       {phase==="quiz"&&<div className="card w-560">
         <div className="label-caps" style={{display:"flex",justifyContent:"space-between",marginBottom:18}}>
