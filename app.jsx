@@ -250,7 +250,7 @@ function App() {
               <div className="result-score-msg">रिवीजन पूरा हुआ! 🌊</div>
             </div>
             <div style={{fontSize:13,color:"var(--dim)",textAlign:"center",lineHeight:1.6,marginBottom:20}}>
-              जो शब्द सही हुए वो कुछ दिनों बाद फिर आएंगे। जो अभी याद नहीं हुए वो कल फिर दिखेंगे।
+              जो शब्द सही हुए वो कुछ घंटों बाद फिर आएंगे। जो अभी याद नहीं हुए वो 1 घंटे बाद फिर दिखेंगे।
             </div>
             <div className="result-actions">
               <button className="btn btn-ghost" onClick={()=>setScreen("home")}>होम</button>
@@ -317,10 +317,10 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="info-box info-box--blue">
+        {flipped && <div className="info-box info-box--blue">
           <div className="info-box-label info-box-label--blue">याद रखने का तरीका</div>
           <div className="info-box-text info-box-text--blue">{W.tip}</div>
-        </div>
+        </div>}
         <div className="btn-row">
           {wordIdx>0&&<button className="btn btn-ghost btn--auto" onClick={()=>{setWordIdx(i=>i-1);setFlipped(false);}}>पिछला</button>}
           <button className="btn btn-primary" style={{flex:1}} onClick={()=>{setFlipped(false);if(wordIdx<L.words.length-1)setWordIdx(i=>i+1);else{setPhase("quiz");setQuizIdx(0);setScore(0);setChosen(null);}}}>
