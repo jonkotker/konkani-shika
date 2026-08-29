@@ -215,17 +215,17 @@ function shuffleQuiz(questions) {
 }
 
 // ─── Spaced Repetition (simplified SM-2) ───────────────────────────────────
-const SRS_INTERVALS = [1, 3, 7, 16, 35, 90]; // days, indexed by consecutive correct reps
+const SRS_INTERVALS = [1, 3, 7, 16, 35, 90]; // hours, indexed by consecutive correct reps
 
 function nextSrsState(entry, correct) {
   const now = new Date();
   if (correct) {
     const reps = (entry?.reps ?? 0) + 1;
-    const days = SRS_INTERVALS[Math.min(reps - 1, SRS_INTERVALS.length - 1)];
-    const due = new Date(now); due.setDate(due.getDate() + days);
-    return { reps, interval: days, dueDate: due.toISOString() };
+    const hours = SRS_INTERVALS[Math.min(reps - 1, SRS_INTERVALS.length - 1)];
+    const due = new Date(now); due.setHours(due.getHours() + hours);
+    return { reps, interval: hours, dueDate: due.toISOString() };
   } else {
-    const due = new Date(now); due.setDate(due.getDate() + 1);
+    const due = new Date(now); due.setHours(due.getHours() + 1);
     return { reps: 0, interval: 1, dueDate: due.toISOString() };
   }
 }
