@@ -72,10 +72,16 @@ function App() {
   }
   function nextQ() {
     const L=LESSONS[dayIdx];
-    const Qcur=(shuffledQuiz.length?shuffledQuiz:L.quiz)[quizIdx];
-    const ok=chosen===Qcur.answer, ns=score+(ok?1:0);
-    const qLen=(shuffledQuiz.length||L.quiz.length);
-    if(quizIdx<qLen-1){setScore(ns);setChosen(null);setQuizIdx(q=>q+1);}
+    const queue=(shuffledQuiz.length?shuffledQuiz:L.quiz);
+    const Qcur=queue[quizIdx];
+    const ok=chosen===Qcur.answer;
+    const ns=score+(ok && !Qcur.isRetry ? 1 : 0);
+    let newQueue=queue;
+    if(!ok){
+      newQueue=[...queue, {...Qcur, isRetry:true}];
+      setShuffledQuiz(newQueue);
+    }
+    if(quizIdx<newQueue.length-1){setScore(ns);setChosen(null);setQuizIdx(q=>q+1);}
     else{
       const newSrs = seedSrsForDay(dayIdx, progress);
       const newP = {...progress,[dayIdx]:{score:ns,total:L.quiz.length,completedAt:new Date().toISOString()},srs:newSrs};
@@ -331,7 +337,7 @@ function App() {
 
       {phase==="quiz"&&<div className="card w-560">
         <div className="label-caps" style={{display:"flex",justifyContent:"space-between",marginBottom:18}}>
-          <span>Quiz</span>
+          <span>Quiz{Q.isRetry?" · दोबारा":""}</span>
           <span className="label-value">{quizIdx+1} / {(shuffledQuiz.length||L.quiz.length)}</span>
         </div>
         <div className="quiz-question">{Q.q}</div>
