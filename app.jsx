@@ -33,11 +33,14 @@ function App() {
     setSyncing(true);
     sb.from("progress").select("data").eq("user_id", user.id).maybeSingle()
       .then(({ data, error }) => {
+        if (error) console.error("Supabase read failed:", error);
         if (data && data.data) {
           setProgress(data.data);
           try { localStorage.setItem("konkani-progress", JSON.stringify(data.data)); } catch(e) {}
         } else {
-          sb.from("progress").upsert({ user_id: user.id, data: progress }).then(()=>{});
+          sb.from("progress").upsert({ user_id: user.id, data: progress }).then(({ error }) => {
+            if (error) console.error("Supabase initial push failed:", error);
+          });
         }
         setSyncing(false);
       });
