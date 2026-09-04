@@ -1,14 +1,14 @@
 const LESSONS = [
   {
-    day: 1, theme: "Abhivadan", themeHindi: "\u0905\u092d\u093f\u0935\u093e\u0926\u0928", themeEng: "Greetings", emoji: "\uD83D\uDE4F",
+    day: 1, id: "greetings", order: 1, type: "vocab", theme: "Abhivadan", themeHindi: "\u0905\u092d\u093f\u0935\u093e\u0926\u0928", themeEng: "Greetings", emoji: "\uD83D\uDE4F",
     intro: "Konkani is spoken along India's western coast — Goa, Karnataka, Kerala. It's India's youngest official language! We start with the most important words: greetings.",
     words: [
-      { hindi: "\u0928\u092e\u0938\u094d\u0924\u0947", konkani: "\u0926\u0947\u0935 \u092c\u0930\u0947\u0902 \u0915\u0930\u0941\u0902", roman: "Dev Barem Karum", meaning: "May God bless you — used as both hello & thank you", tip: "Unlike Hindi \u0928\u092e\u0938\u094d\u0924\u0947, Konkani greetings invoke God's blessing. You'll use this constantly!" },
-      { hindi: "\u0906\u092a \u0915\u0948\u0938\u0947 \u0939\u0948\u0902?", konkani: "\u0924\u0941\u092e \u0915\u0938\u0947\u0902 \u0906\u0938\u093e\u0924?", roman: "Tum Kasem Aasat?", meaning: "How are you? (respectful)", tip: "'\u0924\u0941\u092e' in Konkani is the respectful 'you' — similar to \u0906\u092a in Hindi." },
-      { hindi: "\u092e\u0948\u0902 \u0920\u0940\u0915 \u0939\u0942\u0901", konkani: "\u0939\u093e\u0902\u0935 \u092c\u0930\u094b \u0906\u0938\u093e\u0902", roman: "Haanv Baro Aasum", meaning: "I am fine", tip: "\u0939\u093e\u0902\u0935 = \u092e\u0948\u0902 — the most essential Konkani word. Learn it first!" },
-      { hindi: "\u0905\u0932\u0935\u093f\u0926\u093e", konkani: "\u092f\u0947\u0924\u093e", roman: "Yeta", meaning: "Goodbye (literally: I will come back)", tip: "Konkani speakers say 'I'll come' instead of goodbye — it implies you'll meet again!" },
-{ hindi: "\u0939\u093e\u0901", konkani: "\u0935\u094d\u0939\u092f", roman: "Vhoy", meaning: "Yes", tip: "\u0935\u094d\u0939\u092f sounds like 'vhoy' \u2014 a soft \u0935\u094d sound. Its opposite \u0928\u093e (no) is the next card." },
-      { hindi: "\u0928\u0939\u0940\u0902", konkani: "\u0928\u093e", roman: "Na", meaning: "No", tip: "\u0928\u093e is exactly like Hindi \u0928\u0939\u0940\u0902 \u2014 one of the easiest Konkani words to remember!" },
+      { id: "greetings-w0", hindi: "\u0928\u092e\u0938\u094d\u0924\u0947", konkani: "\u0926\u0947\u0935 \u092c\u0930\u0947\u0902 \u0915\u0930\u0941\u0902", roman: "Dev Barem Karum", meaning: "May God bless you — used as both hello & thank you", tip: "Unlike Hindi \u0928\u092e\u0938\u094d\u0924\u0947, Konkani greetings invoke God's blessing. You'll use this constantly!" },
+      { id: "greetings-w1", hindi: "\u0906\u092a \u0915\u0948\u0938\u0947 \u0939\u0948\u0902?", konkani: "\u0924\u0941\u092e \u0915\u0938\u0947\u0902 \u0906\u0938\u093e\u0924?", roman: "Tum Kasem Aasat?", meaning: "How are you? (respectful)", tip: "'\u0924\u0941\u092e' in Konkani is the respectful 'you' — similar to \u0906\u092a in Hindi." },
+      { id: "greetings-w2", hindi: "\u092e\u0948\u0902 \u0920\u0940\u0915 \u0939\u0942\u0901", konkani: "\u0939\u093e\u0902\u0935 \u092c\u0930\u094b \u0906\u0938\u093e\u0902", roman: "Haanv Baro Aasum", meaning: "I am fine", tip: "\u0939\u093e\u0902\u0935 = \u092e\u0948\u0902 — the most essential Konkani word. Learn it first!" },
+      { id: "greetings-w3", hindi: "\u0905\u0932\u0935\u093f\u0926\u093e", konkani: "\u092f\u0947\u0924\u093e", roman: "Yeta", meaning: "Goodbye (literally: I will come back)", tip: "Konkani speakers say 'I'll come' instead of goodbye — it implies you'll meet again!" },
+{ id: "greetings-w4", hindi: "\u0939\u093e\u0901", konkani: "\u0935\u094d\u0939\u092f", roman: "Vhoy", meaning: "Yes", tip: "\u0935\u094d\u0939\u092f sounds like 'vhoy' \u2014 a soft \u0935\u094d sound. Its opposite \u0928\u093e (no) is the next card." },
+      { id: "greetings-w5", hindi: "\u0928\u0939\u0940\u0902", konkani: "\u0928\u093e", roman: "Na", meaning: "No", tip: "\u0928\u093e is exactly like Hindi \u0928\u0939\u0940\u0902 \u2014 one of the easiest Konkani words to remember!" },
     ],
     quiz: [
       { q: "'\u0939\u093e\u0902\u0935' \u0915\u093e \u092e\u0924\u0932\u092c \u0915\u094d\u092f\u093e \u0939\u0948?", options: ["\u0906\u092a", "\u092e\u0948\u0902", "\u0935\u094b", "\u0939\u092e"], answer: 1, explanation: "\u0939\u093e\u0902\u0935 = \u092e\u0948\u0902 (I) — Konkani \u0915\u093e \u0938\u092c\u0938\u0947 \u0906\u0935\u0936\u094d\u092f\u0915 \u0936\u092c\u094d\u0926!" },
@@ -21,16 +21,16 @@ const LESSONS = [
     cultural: "Konkani has no single script — it's written in Devanagari, Roman, Kannada, and Malayalam scripts. Goan Catholics use Roman; Hindus use Devanagari. This app uses both so you get comfortable with both!"
   },
   {
-    day: 2, theme: "Kutumb", themeHindi: "\u092a\u0930\u093f\u0935\u093e\u0930", themeEng: "Family", emoji: "\uD83D\uDC68\u200D\uD83D\uDC69\u200D\uD83D\uDC67",
+    day: 2, id: "family", order: 2, type: "vocab", theme: "Kutumb", themeHindi: "\u092a\u0930\u093f\u0935\u093e\u0930", themeEng: "Family", emoji: "\uD83D\uDC68\u200D\uD83D\uDC69\u200D\uD83D\uDC67",
     intro: "Family is everything in Konkani culture. Notice how some words feel close to Hindi — that's because both come from Sanskrit!",
     words: [
-      { hindi: "\u092e\u093e\u0901", konkani: "\u0906\u0908", roman: "Aai", meaning: "Mother", tip: "\u0906\u0908 sounds like Marathi too! Coastal languages share a lot." },
-{ hindi: "\u092a\u093f\u0924\u093e (\u0938\u093e\u092e\u093e\u0928\u094d\u092f)", konkani: "\u092c\u093e\u092c\u093e", roman: "Baaba", meaning: "Father (informal/casual)", tip: "\u092c\u093e\u092c\u093e is the everyday, informal word for father \u2014 used casually at home." },
-      { hindi: "\u092d\u093e\u0908", konkani: "\u092d\u093e\u0935", roman: "Bhaav", meaning: "Brother (older)", tip: "\u092d\u093e\u0935 is close to \u092d\u093e\u0908 — same Sanskrit root! Easy to remember." },
-      { hindi: "\u092c\u0939\u0928", konkani: "\u092d\u092f\u0923", roman: "Bhayan", meaning: "Sister", tip: "\u092d\u092f\u0923 and \u092c\u0939\u0928 both come from Sanskrit 'bhagini'. Same ancestor!" },
-{ hindi: "\u0932\u0921\u093c\u0915\u093e", konkani: "\u092d\u0941\u0930\u0917\u094b", roman: "Bhurgo", meaning: "Boy / male child", tip: "-o ending marks masculine. Its feminine pair \u092d\u0941\u0930\u0917\u0940 (girl) is a separate card below." },
-      { hindi: "\u092a\u093f\u0924\u093e (\u0906\u0926\u0930 \u0915\u0947 \u0938\u093e\u0925)", konkani: "\u092a\u093e\u092f", roman: "Paay", meaning: "Father (respectful/formal)", tip: "\u092a\u093e\u092f is used in more traditional or religious contexts \u2014 a more respectful register than \u092c\u093e\u092c\u093e." },
-      { hindi: "\u0932\u0921\u093c\u0915\u0940", konkani: "\u092d\u0941\u0930\u0917\u0940", roman: "Bhurgi", meaning: "Girl / female child", tip: "-i ending marks feminine \u2014 the mirror image of \u092d\u0941\u0930\u0917\u094b (boy)." },
+      { id: "family-w0", hindi: "\u092e\u093e\u0901", konkani: "\u0906\u0908", roman: "Aai", meaning: "Mother", tip: "\u0906\u0908 sounds like Marathi too! Coastal languages share a lot." },
+{ id: "family-w1", hindi: "\u092a\u093f\u0924\u093e (\u0938\u093e\u092e\u093e\u0928\u094d\u092f)", konkani: "\u092c\u093e\u092c\u093e", roman: "Baaba", meaning: "Father (informal/casual)", tip: "\u092c\u093e\u092c\u093e is the everyday, informal word for father \u2014 used casually at home." },
+      { id: "family-w2", hindi: "\u092d\u093e\u0908", konkani: "\u092d\u093e\u0935", roman: "Bhaav", meaning: "Brother (older)", tip: "\u092d\u093e\u0935 is close to \u092d\u093e\u0908 — same Sanskrit root! Easy to remember." },
+      { id: "family-w3", hindi: "\u092c\u0939\u0928", konkani: "\u092d\u092f\u0923", roman: "Bhayan", meaning: "Sister", tip: "\u092d\u092f\u0923 and \u092c\u0939\u0928 both come from Sanskrit 'bhagini'. Same ancestor!" },
+{ id: "family-w4", hindi: "\u0932\u0921\u093c\u0915\u093e", konkani: "\u092d\u0941\u0930\u0917\u094b", roman: "Bhurgo", meaning: "Boy / male child", tip: "-o ending marks masculine. Its feminine pair \u092d\u0941\u0930\u0917\u0940 (girl) is a separate card below." },
+      { id: "family-w5", hindi: "\u092a\u093f\u0924\u093e (\u0906\u0926\u0930 \u0915\u0947 \u0938\u093e\u0925)", konkani: "\u092a\u093e\u092f", roman: "Paay", meaning: "Father (respectful/formal)", tip: "\u092a\u093e\u092f is used in more traditional or religious contexts \u2014 a more respectful register than \u092c\u093e\u092c\u093e." },
+      { id: "family-w6", hindi: "\u0932\u0921\u093c\u0915\u0940", konkani: "\u092d\u0941\u0930\u0917\u0940", roman: "Bhurgi", meaning: "Girl / female child", tip: "-i ending marks feminine \u2014 the mirror image of \u092d\u0941\u0930\u0917\u094b (boy)." },
     ],
     quiz: [
       { q: "Konkani \u092e\u0947\u0902 '\u092e\u093e\u0901' \u0915\u094b \u0915\u094d\u092f\u093e \u0915\u0939\u0924\u0947 \u0939\u0948\u0902?", options: ["\u092c\u093e\u092c\u093e", "\u0906\u0908", "\u092d\u092f\u0923", "\u092d\u093e\u0935"], answer: 1, explanation: "\u0906\u0908 = \u092e\u093e\u0901 \u0964 Marathi \u092e\u0947\u0902 \u092d\u0940 \u0906\u0908 \u0939\u0940 \u0939\u0948!" },
@@ -39,18 +39,19 @@ const LESSONS = [
       { q: "'\u092d\u092f\u0923' \u0915\u093e \u092e\u0924\u0932\u092c?", options: ["\u092e\u093e\u0901", "\u092d\u093e\u0908", "\u092c\u0939\u0928", "\u092c\u091a\u094d\u091a\u093e"], answer: 2, explanation: "\u092d\u092f\u0923 = \u092c\u0939\u0928 \u0964 Sanskrit 'bhagini' \u0938\u0947 \u0906\u0924\u093e \u0939\u0948 — Hindi \u092c\u0939\u0928 \u0915\u0940 \u0924\u0930\u0939!" },
       { q: "Konkani \u092e\u0947\u0902 '\u092a\u093f\u0924\u093e' \u0915\u094b \u0915\u094d\u092f\u093e \u0915\u0939\u0924\u0947 \u0939\u0948\u0902? (informal)", options: ["\u092d\u093e\u0935", "\u092a\u093e\u092f", "\u0906\u0908", "\u092c\u093e\u092c\u093e"], answer: 3, explanation: "\u092c\u093e\u092c\u093e = \u092a\u093f\u0924\u093e (informal) \u0964 \u092a\u093e\u092f = respectful form \u0964 Both are used!" },
       { q: "'\u092d\u0941\u0930\u0917\u0940' \u0915\u093e \u092e\u0924\u0932\u092c?", options: ["\u0932\u095c\u0915\u093e", "\u092e\u093e\u0901", "\u0932\u095c\u0915\u0940", "\u092c\u0939\u0928"], answer: 2, explanation: "\u092d\u0941\u0930\u0917\u0940 = \u0932\u095c\u0915\u0940 \u0964 \u092d\u0941\u0930\u0917\u094b = \u0932\u095c\u0915\u093e \u0964 -i = feminine, -o = masculine!" },
+      { q: "'\u092d\u0941\u0930\u0917\u094b' \u0914\u0930 '\u092d\u0941\u0930\u0917\u0940' \u091c\u0948\u0938\u0947 -o/-i pattern \u0938\u0947 \u0906\u092a Day 10 \u092e\u0947\u0902 \u0915\u094d\u092f\u093e \u0938\u0940\u0916\u0947\u0902\u0917\u0947?", options: ["Colors", "Numbers", "Possessive words (my/your)", "Days of the week"], answer: 2, explanation: "Day 10 \u092e\u0947\u0902 \u0906\u092a \u0926\u0947\u0916\u0947\u0902\u0917\u0947 \u0915\u093f \u092f\u0939\u0940 -o/-i/-em pattern possessive words (\u092e\u093e\u091d\u094b/\u092e\u093e\u091d\u0940/\u092e\u093e\u091d\u0947\u0902) \u092e\u0947\u0902 \u092d\u0940 \u0926\u094b\u0939\u0930\u093e\u0924\u093e \u0939\u0948!" },
     ],
     cultural: "In traditional Konkani Hindu families, the mother's brother (mama) holds a very special ceremonial role — often more than the father. Family networks are tight and multigenerational living is very common."
   },
   {
-    day: 3, theme: "Jevan-Pivap", themeHindi: "\u0916\u093e\u0928\u093e-\u092a\u0940\u0928\u093e", themeEng: "Food & Drink", emoji: "\uD83C\uDF5B",
+    day: 3, id: "food-drink", order: 3, type: "vocab", theme: "Jevan-Pivap", themeHindi: "\u0916\u093e\u0928\u093e-\u092a\u0940\u0928\u093e", themeEng: "Food & Drink", emoji: "\uD83C\uDF5B",
     intro: "Konkani food is famous — coastal, coconut-rich, vibrant. Today's words will help you at the table and maybe at a Goan restaurant someday!",
     words: [
-      { hindi: "\u0916\u093e\u0928\u093e / \u092d\u094b\u091c\u0928", konkani: "\u091c\u0947\u0935\u0923", roman: "Jevan", meaning: "Food / meal", tip: "You'll hear '\u091c\u0947\u0935\u0923 \u091c\u0947\u0935\u0932\u093e\u092f?' (Did you eat?) as a Konkani greeting!" },
-      { hindi: "\u092a\u093e\u0928\u0940", konkani: "\u0909\u0926\u0915", roman: "Udak", meaning: "Water", tip: "\u0909\u0926\u0915 is very different from Hindi \u092a\u093e\u0928\u0940 — comes from Sanskrit directly. Must memorize!" },
-      { hindi: "\u091a\u093e\u0935\u0932", konkani: "\u0924\u093e\u0902\u0926\u0942\u0933", roman: "Taandul", meaning: "Rice", tip: "Rice is central to Konkani life — a meal without rice isn't a proper meal!" },
-      { hindi: "\u092e\u091b\u0932\u0940", konkani: "\u0928\u0941\u0938\u094d\u0924\u0947\u0902", roman: "Nustem", meaning: "Fish", tip: "Fish curry + rice = the ultimate Konkani combo. You'll hear \u0928\u0941\u0938\u094d\u0924\u0947\u0902 everywhere!" },
-      { hindi: "\u092e\u0941\u091d\u0947 \u092d\u0942\u0916 \u0932\u0917\u0940 \u0939\u0948", konkani: "\u092e\u094d\u0939\u093e\u0915\u093e \u092d\u0942\u0915 \u0932\u093e\u0917\u0932\u094d\u092f\u093e", roman: "Mhaka Bhuk Laaglyaa", meaning: "I am hungry", tip: "\u092e\u094d\u0939\u093e\u0915\u093e = \u092e\u0941\u091d\u0947 \u0964 \u092d\u0942\u0915 = \u092d\u0942\u0916 — almost identical! \u092e\u094d\u0939\u093e\u0915\u093e is a key word." },
+      { id: "food-drink-w0", hindi: "\u0916\u093e\u0928\u093e / \u092d\u094b\u091c\u0928", konkani: "\u091c\u0947\u0935\u0923", roman: "Jevan", meaning: "Food / meal", tip: "You'll hear '\u091c\u0947\u0935\u0923 \u091c\u0947\u0935\u0932\u093e\u092f?' (Did you eat?) as a Konkani greeting!" },
+      { id: "food-drink-w1", hindi: "\u092a\u093e\u0928\u0940", konkani: "\u0909\u0926\u0915", roman: "Udak", meaning: "Water", tip: "\u0909\u0926\u0915 is very different from Hindi \u092a\u093e\u0928\u0940 — comes from Sanskrit directly. Must memorize!" },
+      { id: "food-drink-w2", hindi: "\u091a\u093e\u0935\u0932", konkani: "\u0924\u093e\u0902\u0926\u0942\u0933", roman: "Taandul", meaning: "Rice", tip: "Rice is central to Konkani life — a meal without rice isn't a proper meal!" },
+      { id: "food-drink-w3", hindi: "\u092e\u091b\u0932\u0940", konkani: "\u0928\u0941\u0938\u094d\u0924\u0947\u0902", roman: "Nustem", meaning: "Fish", tip: "Fish curry + rice = the ultimate Konkani combo. You'll hear \u0928\u0941\u0938\u094d\u0924\u0947\u0902 everywhere!" },
+      { id: "food-drink-w4", hindi: "\u092e\u0941\u091d\u0947 \u092d\u0942\u0916 \u0932\u0917\u0940 \u0939\u0948", konkani: "\u092e\u094d\u0939\u093e\u0915\u093e \u092d\u0942\u0915 \u0932\u093e\u0917\u0932\u094d\u092f\u093e", roman: "Mhaka Bhuk Laaglyaa", meaning: "I am hungry", tip: "\u092e\u094d\u0939\u093e\u0915\u093e = \u092e\u0941\u091d\u0947 \u0964 \u092d\u0942\u0915 = \u092d\u0942\u0916 — almost identical! \u092e\u094d\u0939\u093e\u0915\u093e is a key word." },
     ],
     quiz: [
       { q: "Konkani \u092e\u0947\u0902 'water' \u0915\u094b \u0915\u094d\u092f\u093e \u0915\u0939\u0924\u0947 \u0939\u0948\u0902?", options: ["\u091c\u0947\u0935\u0923", "\u0909\u0926\u0915", "\u0928\u0941\u0938\u094d\u0924\u0947\u0902", "\u0924\u093e\u0902\u0926\u0942\u0933"], answer: 1, explanation: "\u0909\u0926\u0915 = \u092a\u093e\u0928\u0940 \u0964 Hindi \u0938\u0947 \u0915\u093e\u092b\u093c\u0940 \u0905\u0932\u0917 \u0939\u0948 — \u0927\u094d\u092f\u093e\u0928 \u0938\u0947 \u092f\u093e\u0926 \u0915\u0930\u0947\u0902!" },
@@ -63,17 +64,17 @@ const LESSONS = [
     cultural: "The famous Goan fish curry uses coconut milk and kokum — a sour fruit unique to the Western Ghats. Konkani cuisine influenced even Portuguese cooking during 450 years of colonial rule in Goa."
   },
   {
-    day: 4, theme: "Rong ani Ank", themeHindi: "\u0930\u0902\u0917 \u0914\u0930 \u0938\u0902\u0916\u094d\u092f\u093e", themeEng: "Colors & Numbers", emoji: "\uD83C\uDFA8",
+    day: 4, id: "colors-numbers", order: 4, type: "vocab", theme: "Rong ani Ank", themeHindi: "\u0930\u0902\u0917 \u0914\u0930 \u0938\u0902\u0916\u094d\u092f\u093e", themeEng: "Colors & Numbers", emoji: "\uD83C\uDFA8",
     intro: "Today we learn colors and numbers — the building blocks for describing the world. Some feel close to Hindi, others are surprises!",
     words: [
-{ hindi: "\u090f\u0915", konkani: "\u090f\u0915", roman: "Ek", meaning: "One", tip: "\u090f\u0915 is identical to Hindi! The easiest number to remember." },
-      { hindi: "\u0932\u093e\u0932", konkani: "\u0924\u093e\u0902\u092c\u0921\u094b", roman: "Taambdo", meaning: "Red (masculine form)", tip: "\u0924\u093e\u0902\u092c\u0921\u094b comes from \u0924\u093e\u0902\u092c\u0947\u0902 (copper) — red like copper! Feminine: \u0924\u093e\u0902\u092c\u0921\u0940." },
-      { hindi: "\u0939\u0930\u093e", konkani: "\u0939\u093f\u0930\u0935\u094b", roman: "Hirvo", meaning: "Green", tip: "\u0939\u093f\u0930\u0935\u094b is also in Marathi (\u0939\u093f\u0930\u0935\u093e). If you know any Marathi, this feels familiar!" },
-      { hindi: "\u0928\u0940\u0932\u093e", konkani: "\u0928\u093f\u0933\u094b", roman: "Nilo", meaning: "Blue", tip: "\u0928\u093f\u0933\u094b is close to Marathi \u0928\u093f\u0933\u093e. Coastal languages share many color words." },
-{ hindi: "\u092c\u0921\u093c\u093e", konkani: "\u0935\u094d\u0939\u0921", roman: "Vhad", meaning: "Big", tip: "\u0935\u094d\u0939\u0921 is uniquely Konkani \u2014 no Hindi shortcut. Its opposite \u0932\u094d\u0939\u093e\u0928 (small) is the next card." },
-      { hindi: "\u0926\u094b", konkani: "\u0926\u094b\u0928", roman: "Don", meaning: "Two", tip: "\u0926\u094b\u0928 is close to Hindi \u0926\u094b \u2014 just an extra '\u0928' added." },
-      { hindi: "\u0924\u0940\u0928", konkani: "\u0924\u0940\u0928", roman: "Tin", meaning: "Three", tip: "\u0924\u0940\u0928 is identical to Hindi \u2014 no change needed!" },
-      { hindi: "\u091b\u094b\u091f\u093e", konkani: "\u0932\u094d\u0939\u093e\u0928", roman: "Lhaan", meaning: "Small", tip: "\u0932\u094d\u0939\u093e\u0928 pairs with \u0935\u094d\u0939\u0921 (big) \u2014 learn them together as opposites." },
+{ id: "colors-numbers-w0", hindi: "\u090f\u0915", konkani: "\u090f\u0915", roman: "Ek", meaning: "One", tip: "\u090f\u0915 is identical to Hindi! The easiest number to remember." },
+      { id: "colors-numbers-w1", hindi: "\u0932\u093e\u0932", konkani: "\u0924\u093e\u0902\u092c\u0921\u094b", roman: "Taambdo", meaning: "Red (masculine form)", tip: "\u0924\u093e\u0902\u092c\u0921\u094b comes from \u0924\u093e\u0902\u092c\u0947\u0902 (copper) — red like copper! Feminine: \u0924\u093e\u0902\u092c\u0921\u0940." },
+      { id: "colors-numbers-w2", hindi: "\u0939\u0930\u093e", konkani: "\u0939\u093f\u0930\u0935\u094b", roman: "Hirvo", meaning: "Green", tip: "\u0939\u093f\u0930\u0935\u094b is also in Marathi (\u0939\u093f\u0930\u0935\u093e). If you know any Marathi, this feels familiar!" },
+      { id: "colors-numbers-w3", hindi: "\u0928\u0940\u0932\u093e", konkani: "\u0928\u093f\u0933\u094b", roman: "Nilo", meaning: "Blue", tip: "\u0928\u093f\u0933\u094b is close to Marathi \u0928\u093f\u0933\u093e. Coastal languages share many color words." },
+{ id: "colors-numbers-w4", hindi: "\u092c\u0921\u093c\u093e", konkani: "\u0935\u094d\u0939\u0921", roman: "Vhad", meaning: "Big", tip: "\u0935\u094d\u0939\u0921 is uniquely Konkani \u2014 no Hindi shortcut. Its opposite \u0932\u094d\u0939\u093e\u0928 (small) is the next card." },
+      { id: "colors-numbers-w5", hindi: "\u0926\u094b", konkani: "\u0926\u094b\u0928", roman: "Don", meaning: "Two", tip: "\u0926\u094b\u0928 is close to Hindi \u0926\u094b \u2014 just an extra '\u0928' added." },
+      { id: "colors-numbers-w6", hindi: "\u0924\u0940\u0928", konkani: "\u0924\u0940\u0928", roman: "Tin", meaning: "Three", tip: "\u0924\u0940\u0928 is identical to Hindi \u2014 no change needed!" },
+      { id: "colors-numbers-w7", hindi: "\u091b\u094b\u091f\u093e", konkani: "\u0932\u094d\u0939\u093e\u0928", roman: "Lhaan", meaning: "Small", tip: "\u0932\u094d\u0939\u093e\u0928 pairs with \u0935\u094d\u0939\u0921 (big) \u2014 learn them together as opposites." },
     ],
     quiz: [
       { q: "'\u0924\u093e\u0902\u092c\u0921\u094b' \u0915\u093e \u092e\u0924\u0932\u092c?", options: ["\u0928\u0940\u0932\u093e", "\u0939\u0930\u093e", "\u0932\u093e\u0932", "\u092c\u095c\u093e"], answer: 2, explanation: "\u0924\u093e\u0902\u092c\u0921\u094b = \u0932\u093e\u0932 (Red) \u0964 \u0924\u093e\u0902\u092c\u0947\u0902 \u092f\u093e\u0928\u0940 copper \u0938\u0947 \u0906\u092f\u093e \u0939\u0948!" },
@@ -86,19 +87,19 @@ const LESSONS = [
     cultural: "Konkani borrowed heavily from Portuguese during Goa's 450 years of colonial rule. Words like 'janela' (window), 'iskol' (school), 'baldi' (bucket) are direct Portuguese loans still used in Konkani today!"
   },
   {
-    day: 5, theme: "Vel ani Dees", themeHindi: "\u0938\u092e\u092f \u0914\u0930 \u0926\u093f\u0928", themeEng: "Time & Days", emoji: "\uD83D\uDD50",
+    day: 5, id: "time-days", order: 5, type: "vocab", theme: "Vel ani Dees", themeHindi: "\u0938\u092e\u092f \u0914\u0930 \u0926\u093f\u0928", themeEng: "Time & Days", emoji: "\uD83D\uDD50",
     intro: "Talking about time is essential — when to meet, when to eat, what day it is. Today's lesson helps you navigate days and basic time expressions.",
     words: [
-{ hindi: "\u0906\u091c", konkani: "\u0906\u092f\u091c", roman: "Aayaj", meaning: "Today", tip: "\u0906\u092f\u091c is close to Hindi \u0906\u091c \u2014 an easy one to start with." },
-      { hindi: "\u0938\u094b\u092e\u0935\u093e\u0930", konkani: "\u0938\u094b\u092e\u093e\u0930", roman: "Somar", meaning: "Monday", tip: "\u0938\u094b\u092e\u093e\u0930 — close to \u0938\u094b\u092e\u0935\u093e\u0930! Konkani just drops '\u0935\u093e\u0930'. All days follow this pattern." },
-      { hindi: "\u0936\u0941\u0915\u094d\u0930\u0935\u093e\u0930", konkani: "\u0936\u0941\u0915\u094d\u0930\u093e\u0930", roman: "Shukraar", meaning: "Friday", tip: "\u0936\u0941\u0915\u094d\u0930\u0935\u093e\u0930 \u2192 \u0936\u0941\u0915\u094d\u0930\u093e\u0930. Once you see the pattern, all days become easy!" },
-{ hindi: "\u0938\u0941\u092c\u0939", konkani: "\u0938\u0915\u093e\u0933", roman: "Sakaal", meaning: "Morning", tip: "\u0938\u0915\u093e\u0933 is also used in Marathi \u2014 a shared coastal-language word." },
-{ hindi: "\u0905\u092d\u0940", konkani: "\u0906\u0924\u093e\u0902", roman: "Aataam", meaning: "Now", tip: "\u0906\u0924\u093e\u0902 \u2014 think of it as '\u0905\u092d\u0940-\u0924\u093e\u0901'. Its counterpart \u092b\u0941\u0921\u0947\u0902 (later) is the next card." },
-      { hindi: "\u0915\u0932", konkani: "\u092b\u093e\u0932\u094d\u092f\u093e\u0902", roman: "Phaalyaam", meaning: "Tomorrow", tip: "\u092b\u093e\u0932\u094d\u092f\u093e\u0902 \u2014 a fresh word to memorize, no Hindi shortcut here." },
-      { hindi: "\u092a\u0930\u0938\u094b\u0902", konkani: "\u092a\u0930\u0935\u093e\u0902", roman: "Parvaam", meaning: "Day after tomorrow", tip: "\u092a\u0930\u0935\u093e\u0902 is close to Hindi \u092a\u0930\u0938\u094b\u0902 \u2014 an easy win!" },
-      { hindi: "\u0936\u093e\u092e", konkani: "\u0938\u093e\u0902\u091c", roman: "Saanj", meaning: "Evening", tip: "\u0938\u093e\u0902\u091c for evening is distinctly Konkani \u2014 no direct Hindi cognate." },
-      { hindi: "\u0930\u093e\u0924", konkani: "\u0930\u093e\u0924", roman: "Raat", meaning: "Night", tip: "\u0930\u093e\u0924 is identical to Hindi \u2014 the easiest of this trio!" },
-      { hindi: "\u092c\u093e\u0926 \u092e\u0947\u0902", konkani: "\u092b\u0941\u0921\u0947\u0902", roman: "Phuddem", meaning: "Later", tip: "\u092b\u0941\u0921\u0947\u0902 literally means 'ahead' \u2014 later is what's ahead of you in time." },
+{ id: "time-days-w0", hindi: "\u0906\u091c", konkani: "\u0906\u092f\u091c", roman: "Aayaj", meaning: "Today", tip: "\u0906\u092f\u091c is close to Hindi \u0906\u091c \u2014 an easy one to start with." },
+      { id: "time-days-w1", hindi: "\u0938\u094b\u092e\u0935\u093e\u0930", konkani: "\u0938\u094b\u092e\u093e\u0930", roman: "Somar", meaning: "Monday", tip: "\u0938\u094b\u092e\u093e\u0930 — close to \u0938\u094b\u092e\u0935\u093e\u0930! Konkani just drops '\u0935\u093e\u0930'. All days follow this pattern." },
+      { id: "time-days-w2", hindi: "\u0936\u0941\u0915\u094d\u0930\u0935\u093e\u0930", konkani: "\u0936\u0941\u0915\u094d\u0930\u093e\u0930", roman: "Shukraar", meaning: "Friday", tip: "\u0936\u0941\u0915\u094d\u0930\u0935\u093e\u0930 \u2192 \u0936\u0941\u0915\u094d\u0930\u093e\u0930. Once you see the pattern, all days become easy!" },
+{ id: "time-days-w3", hindi: "\u0938\u0941\u092c\u0939", konkani: "\u0938\u0915\u093e\u0933", roman: "Sakaal", meaning: "Morning", tip: "\u0938\u0915\u093e\u0933 is also used in Marathi \u2014 a shared coastal-language word." },
+{ id: "time-days-w4", hindi: "\u0905\u092d\u0940", konkani: "\u0906\u0924\u093e\u0902", roman: "Aataam", meaning: "Now", tip: "\u0906\u0924\u093e\u0902 \u2014 think of it as '\u0905\u092d\u0940-\u0924\u093e\u0901'. Its counterpart \u092b\u0941\u0921\u0947\u0902 (later) is the next card." },
+      { id: "time-days-w5", hindi: "\u0915\u0932", konkani: "\u092b\u093e\u0932\u094d\u092f\u093e\u0902", roman: "Phaalyaam", meaning: "Tomorrow", tip: "\u092b\u093e\u0932\u094d\u092f\u093e\u0902 \u2014 a fresh word to memorize, no Hindi shortcut here." },
+      { id: "time-days-w6", hindi: "\u092a\u0930\u0938\u094b\u0902", konkani: "\u092a\u0930\u0935\u093e\u0902", roman: "Parvaam", meaning: "Day after tomorrow", tip: "\u092a\u0930\u0935\u093e\u0902 is close to Hindi \u092a\u0930\u0938\u094b\u0902 \u2014 an easy win!" },
+      { id: "time-days-w7", hindi: "\u0936\u093e\u092e", konkani: "\u0938\u093e\u0902\u091c", roman: "Saanj", meaning: "Evening", tip: "\u0938\u093e\u0902\u091c for evening is distinctly Konkani \u2014 no direct Hindi cognate." },
+      { id: "time-days-w8", hindi: "\u0930\u093e\u0924", konkani: "\u0930\u093e\u0924", roman: "Raat", meaning: "Night", tip: "\u0930\u093e\u0924 is identical to Hindi \u2014 the easiest of this trio!" },
+      { id: "time-days-w9", hindi: "\u092c\u093e\u0926 \u092e\u0947\u0902", konkani: "\u092b\u0941\u0921\u0947\u0902", roman: "Phuddem", meaning: "Later", tip: "\u092b\u0941\u0921\u0947\u0902 literally means 'ahead' \u2014 later is what's ahead of you in time." },
     ],
     quiz: [
       { q: "Konkani \u092e\u0947\u0902 'tomorrow' \u0915\u094d\u092f\u093e \u0939\u0948?", options: ["\u0906\u092f\u091c", "\u092b\u093e\u0932\u094d\u092f\u093e\u0902", "\u092a\u0930\u0935\u093e\u0902", "\u0938\u093e\u0902\u091c"], answer: 1, explanation: "\u092b\u093e\u0932\u094d\u092f\u093e\u0902 = \u0915\u0932 (tomorrow) \u0964 \u0906\u092f\u091c = \u0906\u091c, \u092a\u0930\u0935\u093e\u0902 = \u092a\u0930\u0938\u094b\u0902\u0964" },
@@ -111,15 +112,15 @@ const LESSONS = [
     cultural: "The biggest Konkani festival is Shigmo — Konkani Holi — celebrated with elaborate folk dances like Ghodemodini (horse dance). The sea is not just geography but spirituality for coastal Konkani communities."
   },
   {
-    day: 6, theme: "Daispotle Ulovanim", themeHindi: "\u0930\u094b\u091c\u093c\u092e\u0930\u094d\u0930\u093e \u0915\u0940 \u092c\u093e\u0924\u0947\u0902", themeEng: "Daily Conversations", emoji: "\uD83D\uDCAC",
+    day: 6, id: "daily-conversations", order: 6, type: "vocab", theme: "Daispotle Ulovanim", themeHindi: "\u0930\u094b\u091c\u093c\u092e\u0930\u094d\u0930\u093e \u0915\u0940 \u092c\u093e\u0924\u0947\u0902", themeEng: "Daily Conversations", emoji: "\uD83D\uDCAC",
     intro: "Today we build your first real sentences! You already know haanv (I) and mhaka (to me). Now let's put them together into things you'd actually say.",
     words: [
-      { hindi: "\u092e\u0941\u091d\u0947 Konkani \u0928\u0939\u0940\u0902 \u0906\u0924\u0940", konkani: "\u092e\u094d\u0939\u093e\u0915\u093e \u0915\u094b\u0902\u0915\u0923\u0940 \u092f\u0947\u0928\u093e", roman: "Mhaka Konkani Yena", meaning: "I don't know Konkani", tip: "\u092f\u0947\u0928\u093e = \u0928\u0939\u0940\u0902 \u0906\u0924\u093e \u0964 \u092f\u0947\u0924\u093e = \u0906\u0924\u093e \u0939\u0948 \u0964 Just add '\u0928' and the meaning flips!" },
-      { hindi: "\u0915\u0943\u092a\u092f\u093e \u0927\u0940\u0930\u0947 \u092c\u094b\u0932\u093f\u090f", konkani: "\u0909\u092a\u0915\u093e\u0930 \u0915\u0930\u0942\u0928 \u0938\u093e\u0935\u0915\u093e\u0936 \u0909\u0932\u092f", roman: "Upkaar Karun Saavakaash Ulay", meaning: "Please speak slowly", tip: "\u0938\u093e\u0935\u0915\u093e\u0936 = \u0927\u0940\u0930\u0947 \u0964 \u0909\u0932\u092f = \u092c\u094b\u0932\u094b \u0964 \u0909\u092a\u0915\u093e\u0930 \u0915\u0930\u0942\u0928 = please (literally 'doing a favor')." },
-      { hindi: "\u092f\u0939 \u0915\u094d\u092f\u093e \u0939\u0948?", konkani: "\u0939\u0947\u0902 \u0915\u093f\u0924\u0947\u0902?", roman: "Hem Kitem?", meaning: "What is this?", tip: "\u0939\u0947\u0902 = \u092f\u0939, \u0915\u093f\u0924\u0947\u0902 = \u0915\u094d\u092f\u093e \u0964 Your most useful question as a beginner!" },
-{ hindi: "\u092e\u0948\u0902 \u0938\u092e\u091d\u093e \u0928\u0939\u0940\u0902", konkani: "\u0939\u093e\u0902\u0935 \u0938\u092e\u091c\u0932\u094b\u0902 \u0928\u093e", roman: "Haanv Samjolom Na", meaning: "I didn't understand (male speaker)", tip: "\u0938\u092e\u091c\u0932\u094b\u0902 is the masculine form. If you're a woman speaking, use \u0938\u092e\u091c\u0932\u0940 \u2014 the next card." },
-      { hindi: "\u092c\u0939\u0941\u0924 \u0905\u091a\u094d\u091b\u093e!", konkani: "\u0916\u0942\u092c \u092c\u0930\u0947\u0902!", roman: "Khoob Barem!", meaning: "Very good! / Excellent!", tip: "\u0916\u0942\u092c sounds just like Hindi! \u092c\u0930\u0947\u0902 = \u0905\u091a\u094d\u091b\u093e \u0964 \u0916\u0942\u092c \u092c\u0930\u0947\u0902 = \u092c\u0939\u0941\u0924 \u0905\u091a\u094d\u091b\u093e!" },
-      { hindi: "\u092e\u0948\u0902 \u0938\u092e\u091d\u0940 \u0928\u0939\u0940\u0902", konkani: "\u0939\u093e\u0902\u0935 \u0938\u092e\u091c\u0932\u0940 \u0928\u093e", roman: "Haanv Samjoli Na", meaning: "I didn't understand (female speaker)", tip: "\u0938\u092e\u091c\u0932\u0940 is the feminine counterpart to \u0938\u092e\u091c\u0932\u094b\u0902 \u2014 the verb agrees with the speaker's gender here." }
+      { id: "daily-conversations-w0", hindi: "\u092e\u0941\u091d\u0947 Konkani \u0928\u0939\u0940\u0902 \u0906\u0924\u0940", konkani: "\u092e\u094d\u0939\u093e\u0915\u093e \u0915\u094b\u0902\u0915\u0923\u0940 \u092f\u0947\u0928\u093e", roman: "Mhaka Konkani Yena", meaning: "I don't know Konkani", tip: "\u092f\u0947\u0928\u093e = \u0928\u0939\u0940\u0902 \u0906\u0924\u093e \u0964 \u092f\u0947\u0924\u093e = \u0906\u0924\u093e \u0939\u0948 \u0964 Just add '\u0928' and the meaning flips!" },
+      { id: "daily-conversations-w1", hindi: "\u0915\u0943\u092a\u092f\u093e \u0927\u0940\u0930\u0947 \u092c\u094b\u0932\u093f\u090f", konkani: "\u0909\u092a\u0915\u093e\u0930 \u0915\u0930\u0942\u0928 \u0938\u093e\u0935\u0915\u093e\u0936 \u0909\u0932\u092f", roman: "Upkaar Karun Saavakaash Ulay", meaning: "Please speak slowly", tip: "\u0938\u093e\u0935\u0915\u093e\u0936 = \u0927\u0940\u0930\u0947 \u0964 \u0909\u0932\u092f = \u092c\u094b\u0932\u094b \u0964 \u0909\u092a\u0915\u093e\u0930 \u0915\u0930\u0942\u0928 = please (literally 'doing a favor')." },
+      { id: "daily-conversations-w2", hindi: "\u092f\u0939 \u0915\u094d\u092f\u093e \u0939\u0948?", konkani: "\u0939\u0947\u0902 \u0915\u093f\u0924\u0947\u0902?", roman: "Hem Kitem?", meaning: "What is this?", tip: "\u0939\u0947\u0902 = \u092f\u0939, \u0915\u093f\u0924\u0947\u0902 = \u0915\u094d\u092f\u093e \u0964 Your most useful question as a beginner!" },
+{ id: "daily-conversations-w3", hindi: "\u092e\u0948\u0902 \u0938\u092e\u091d\u093e \u0928\u0939\u0940\u0902", konkani: "\u0939\u093e\u0902\u0935 \u0938\u092e\u091c\u0932\u094b\u0902 \u0928\u093e", roman: "Haanv Samjolom Na", meaning: "I didn't understand (male speaker)", tip: "\u0938\u092e\u091c\u0932\u094b\u0902 is the masculine form. If you're a woman speaking, use \u0938\u092e\u091c\u0932\u0940 \u2014 the next card." },
+      { id: "daily-conversations-w4", hindi: "\u092c\u0939\u0941\u0924 \u0905\u091a\u094d\u091b\u093e!", konkani: "\u0916\u0942\u092c \u092c\u0930\u0947\u0902!", roman: "Khoob Barem!", meaning: "Very good! / Excellent!", tip: "\u0916\u0942\u092c sounds just like Hindi! \u092c\u0930\u0947\u0902 = \u0905\u091a\u094d\u091b\u093e \u0964 \u0916\u0942\u092c \u092c\u0930\u0947\u0902 = \u092c\u0939\u0941\u0924 \u0905\u091a\u094d\u091b\u093e!" },
+      { id: "daily-conversations-w5", hindi: "\u092e\u0948\u0902 \u0938\u092e\u091d\u0940 \u0928\u0939\u0940\u0902", konkani: "\u0939\u093e\u0902\u0935 \u0938\u092e\u091c\u0932\u0940 \u0928\u093e", roman: "Haanv Samjoli Na", meaning: "I didn't understand (female speaker)", tip: "\u0938\u092e\u091c\u0932\u0940 is the feminine counterpart to \u0938\u092e\u091c\u0932\u094b\u0902 \u2014 the verb agrees with the speaker's gender here." }
     ],
     quiz: [
       { q: "'\u0939\u0947\u0902 \u0915\u093f\u0924\u0947\u0902?' \u0915\u093e \u092e\u0924\u0932\u092c?", options: ["\u092f\u0939 \u0915\u0939\u093e\u0901 \u0939\u0948?", "\u092f\u0939 \u0915\u094d\u092f\u093e \u0939\u0948?", "\u092f\u0939 \u0915\u092c \u0939\u0948?", "\u092f\u0939 \u0915\u093f\u0938\u0915\u093e \u0939\u0948?"], answer: 1, explanation: "\u0939\u0947\u0902 \u0915\u093f\u0924\u0947\u0902? = \u092f\u0939 \u0915\u094d\u092f\u093e \u0939\u0948? — Konkani \u0938\u0940\u0916\u0924\u0947 \u0935\u0915\u094d\u0924 \u0938\u092c\u0938\u0947 useful \u0938\u0935\u093e\u0932!" },
@@ -127,19 +128,20 @@ const LESSONS = [
       { q: "'\u0916\u0942\u092c \u092c\u0930\u0947\u0902' \u0915\u093e \u092e\u0924\u0932\u092c?", options: ["\u092c\u0939\u0941\u0924 \u092c\u0941\u0930\u093e", "\u0925\u094b\u095c\u093e \u0905\u091a\u094d\u091b\u093e", "\u092c\u0939\u0941\u0924 \u0905\u091a\u094d\u091b\u093e", "\u091c\u093c\u0930\u093e \u0930\u0941\u0915\u093f\u090f"], answer: 2, explanation: "\u0916\u0942\u092c \u092c\u0930\u0947\u0902 = \u092c\u0939\u0941\u0924 \u0905\u091a\u094d\u091b\u093e! \u0916\u0942\u092c \u0924\u094b Hindi \u091c\u0948\u0938\u093e \u0939\u0940 \u0939\u0948, \u0914\u0930 \u092c\u0930\u0947\u0902 = \u0905\u091a\u094d\u091b\u093e\u0964" },
       { q: "'\u0938\u093e\u0935\u0915\u093e\u0936' \u0915\u093e \u092e\u0924\u0932\u092c?", options: ["\u0924\u0947\u091c", "\u0927\u0940\u0930\u0947", "\u0905\u092d\u0940", "\u092c\u093e\u0926 \u092e\u0947\u0902"], answer: 1, explanation: "\u0938\u093e\u0935\u0915\u093e\u0936 = \u0927\u0940\u0930\u0947 (slowly) \u0964 '\u0909\u092a\u0915\u093e\u0930 \u0915\u0930\u0942\u0928 \u0938\u093e\u0935\u0915\u093e\u0936 \u0909\u0932\u092f' = Please speak slowly." },
       { q: "'\u0939\u093e\u0902\u0935 \u0938\u092e\u091c\u0932\u094b\u0902 \u0928\u093e' \u0915\u093e \u0905\u0930\u094d\u0925?", options: ["\u092e\u0948\u0902 \u0938\u094b\u091a \u0930\u0939\u093e \u0939\u0942\u0901", "\u092e\u0948\u0902 \u0938\u092e\u091d\u093e \u0928\u0939\u0940\u0902 (male)", "\u092e\u0948\u0902 \u0938\u092e\u091d\u0940 \u0928\u0939\u0940\u0902 (female)", "\u092e\u0941\u091d\u0947 \u092e\u093e\u0932\u0942\u092e \u0928\u0939\u0940\u0902"], answer: 1, explanation: "\u0938\u092e\u091c\u0932\u094b\u0902 = masculine form \u0964 \u0938\u092e\u091c\u0932\u0940 = feminine form \u0964 Root \u0938\u092e\u091c = Hindi \u0938\u092e\u091d!" },
+      { q: "'\u0938\u092e\u091c\u0932\u094b\u0902' vs '\u0938\u092e\u091c\u0932\u0940' gender \u0915\u0947 \u0939\u093f\u0938\u093e\u092c \u0938\u0947 \u092c\u0926\u0932\u0924\u0947 \u0939\u0948\u0902\u0964 \u0915\u094d\u092f\u093e Konkani \u0915\u0947 \u0938\u092d\u0940 verbs \u0910\u0938\u0947 \u0939\u0940 \u092c\u0926\u0932\u0924\u0947 \u0939\u0948\u0902?", options: ["\u0939\u093e\u0901, \u0938\u092d\u0940 verbs gender \u0938\u0947 \u092c\u0926\u0932\u0924\u0947 \u0939\u0948\u0902", "\u0928\u0939\u0940\u0902 \u2014 \u091c\u093c\u094d\u092f\u093e\u0926\u093e\u0924\u0930 present tense verbs gender \u0938\u0947 \u0928\u0939\u0940\u0902 \u092c\u0926\u0932\u0924\u0947 (Day 8 \u092e\u0947\u0902 \u092a\u0942\u0930\u093e \u092a\u0948\u091f\u0930\u094d\u0928 \u0938\u0940\u0916\u0947\u0902\u0917\u0947)", "\u0938\u093f\u0930\u094d\u092b\u093c negative verbs \u092c\u0926\u0932\u0924\u0947 \u0939\u0948\u0902", "\u0938\u093f\u0930\u094d\u092b\u093c questions \u092e\u0947\u0902 \u092c\u0926\u0932\u0924\u0947 \u0939\u0948\u0902"], answer: 1, explanation: "\u0938\u092e\u091c\u0932\u094b\u0902/\u0938\u092e\u091c\u0932\u0940 \u090f\u0915 \u0916\u093e\u0938 \u092a\u0948\u091f\u0930\u094d\u0928 \u0939\u0948\u0964 \u091c\u093c\u094d\u092f\u093e\u0926\u093e\u0924\u0930 present tense verbs (\u091c\u0948\u0938\u0947 \u091c\u0947\u0935\u0924\u093e) gender \u0938\u0947 \u0928\u0939\u0940\u0902 \u092c\u0926\u0932\u0924\u0947 \u2014 \u092f\u0939 Day 8 \u092e\u0947\u0902 \u0935\u093f\u0938\u094d\u0924\u093e\u0930 \u0938\u0947 \u0938\u0940\u0916\u0947\u0902\u0917\u0947!" },
       { q: "'\u092e\u094d\u0939\u093e\u0915\u093e \u0915\u094b\u0902\u0915\u0923\u0940 \u092f\u0947\u0928\u093e' \u0915\u093e \u0905\u0930\u094d\u0925?", options: ["\u092e\u0941\u091d\u0947 Konkani \u092a\u0938\u0902\u0926 \u0928\u0939\u0940\u0902", "\u092e\u0941\u091d\u0947 Konkani \u0928\u0939\u0940\u0902 \u0906\u0924\u0940", "\u092e\u0948\u0902 Konkani \u0938\u0940\u0916\u0924\u093e \u0939\u0942\u0901", "\u092e\u0941\u091d\u0947 Konkani \u092c\u094b\u0932\u0928\u0940 \u0939\u0948"], answer: 1, explanation: "\u092e\u094d\u0939\u093e\u0915\u093e \u0915\u094b\u0902\u0915\u0923\u0940 \u092f\u0947\u0928\u093e = I don't know Konkani \u0964 \u092e\u094d\u0939\u093e\u0915\u093e = \u092e\u0941\u091d\u0947, \u092f\u0947\u0928\u093e = \u0928\u0939\u0940\u0902 \u0906\u0924\u093e!" },
     ],
     cultural: "Konkani has seven major dialects — Goan, Mangalorean, Malvani, Kudali, and more. Mutually intelligible but genuinely different, like Hindi vs Bhojpuri. This app teaches Goan Hindu Konkani written in Devanagari."
   },
   {
-    day: 7, theme: "Bhaavna ani Vichar", themeHindi: "\u092d\u093e\u0935\u0928\u093e\u090f\u0901", themeEng: "Feelings & Thoughts", emoji: "\u2764\uFE0F",
+    day: 7, id: "feelings-thoughts", order: 7, type: "vocab", theme: "Bhaavna ani Vichar", themeHindi: "\u092d\u093e\u0935\u0928\u093e\u090f\u0901", themeEng: "Feelings & Thoughts", emoji: "\u2764\uFE0F",
     intro: "Congratulations on reaching Day 7! Today's lesson is special — expressing feelings. Language becomes real when you can share what's in your heart.",
     words: [
-      { hindi: "\u092e\u0941\u091d\u0947 \u0916\u0941\u0936\u0940 \u0939\u0948", konkani: "\u092e\u094d\u0939\u093e\u0915\u093e \u0906\u0928\u0902\u0926 \u091c\u093e\u0924\u093e", roman: "Mhaka Aanand Jaata", meaning: "I am happy (lit: joy comes to me)", tip: "\u0906\u0928\u0902\u0926 is Sanskrit — same as Hindi! In Konkani, emotions 'come to' you. \u091c\u093e\u0924\u093e = comes." },
-      { hindi: "\u092e\u0941\u091d\u0947 \u0926\u0941\u0916 \u0939\u0948", konkani: "\u092e\u094d\u0939\u093e\u0915\u093e \u0926\u0942\u0916 \u091c\u093e\u0924\u093e", roman: "Mhaka Dukh Jaata", meaning: "I am sad", tip: "\u0926\u0942\u0916 = \u0926\u0941\u0916 — almost identical to Hindi! Same structure as \u0906\u0928\u0902\u0926 \u091c\u093e\u0924\u093e." },
-      { hindi: "\u092e\u0941\u091d\u0947 \u0924\u0941\u092e\u0938\u0947 \u092a\u094d\u092f\u093e\u0930 \u0939\u0948", konkani: "\u0939\u093e\u0902\u0935 \u0924\u0941\u092e\u0915\u093e\u0902 \u092e\u094b\u0917\u0924\u093e", roman: "Haanv Tumkaam Mogta", meaning: "I love you", tip: "\u092e\u094b\u0917 = love in Konkani. \u092e\u094b\u0917\u0924\u093e = I love. \u0924\u0941\u092e\u0915\u093e\u0902 = to you. \u092e\u094b\u0917 is a beautiful, uniquely Konkani word!" },
-      { hindi: "\u092e\u0941\u091d\u0947 \u092f\u093e\u0926 \u0939\u0948", konkani: "\u092e\u094d\u0939\u093e\u0915\u093e \u092f\u093e\u0926 \u0906\u0938\u093e", roman: "Mhaka Yaad Aasa", meaning: "I remember", tip: "\u092f\u093e\u0926 is the same! \u0906\u0938\u093e = \u0939\u0948 (is/am/are). \u092f\u093e\u0926 \u0906\u0938\u093e = \u092f\u093e\u0926 \u0939\u0948 — very close to Hindi!" },
-      { hindi: "Konkani \u0938\u0940\u0916\u0928\u093e \u0905\u091a\u094d\u091b\u093e \u0932\u0917\u0924\u093e \u0939\u0948", konkani: "\u0915\u094b\u0902\u0915\u0923\u0940 \u0936\u093f\u0915\u092a \u092e\u094d\u0939\u093e\u0915\u093e \u092c\u0930\u0947\u0902 \u0926\u093f\u0938\u094d\u0924\u093e", roman: "Konkani Shikap Mhaka Barem Dista", meaning: "I enjoy learning Konkani", tip: "\u0926\u093f\u0938\u094d\u0924\u093e = \u0932\u0917\u0924\u093e \u0939\u0948 \u0964 \u0936\u093f\u0915\u092a = \u0938\u0940\u0916\u0928\u093e \u0964 You've come so far — you can read this whole sentence!" },
+      { id: "feelings-thoughts-w0", hindi: "\u092e\u0941\u091d\u0947 \u0916\u0941\u0936\u0940 \u0939\u0948", konkani: "\u092e\u094d\u0939\u093e\u0915\u093e \u0906\u0928\u0902\u0926 \u091c\u093e\u0924\u093e", roman: "Mhaka Aanand Jaata", meaning: "I am happy (lit: joy comes to me)", tip: "\u0906\u0928\u0902\u0926 is Sanskrit — same as Hindi! In Konkani, emotions 'come to' you. \u091c\u093e\u0924\u093e = comes." },
+      { id: "feelings-thoughts-w1", hindi: "\u092e\u0941\u091d\u0947 \u0926\u0941\u0916 \u0939\u0948", konkani: "\u092e\u094d\u0939\u093e\u0915\u093e \u0926\u0942\u0916 \u091c\u093e\u0924\u093e", roman: "Mhaka Dukh Jaata", meaning: "I am sad", tip: "\u0926\u0942\u0916 = \u0926\u0941\u0916 — almost identical to Hindi! Same structure as \u0906\u0928\u0902\u0926 \u091c\u093e\u0924\u093e." },
+      { id: "feelings-thoughts-w2", hindi: "\u092e\u0941\u091d\u0947 \u0924\u0941\u092e\u0938\u0947 \u092a\u094d\u092f\u093e\u0930 \u0939\u0948", konkani: "\u0939\u093e\u0902\u0935 \u0924\u0941\u092e\u0915\u093e\u0902 \u092e\u094b\u0917\u0924\u093e", roman: "Haanv Tumkaam Mogta", meaning: "I love you", tip: "\u092e\u094b\u0917 = love in Konkani. \u092e\u094b\u0917\u0924\u093e = I love. \u0924\u0941\u092e\u0915\u093e\u0902 = to you. \u092e\u094b\u0917 is a beautiful, uniquely Konkani word!" },
+      { id: "feelings-thoughts-w3", hindi: "\u092e\u0941\u091d\u0947 \u092f\u093e\u0926 \u0939\u0948", konkani: "\u092e\u094d\u0939\u093e\u0915\u093e \u092f\u093e\u0926 \u0906\u0938\u093e", roman: "Mhaka Yaad Aasa", meaning: "I remember", tip: "\u092f\u093e\u0926 is the same! \u0906\u0938\u093e = \u0939\u0948 (is/am/are). \u092f\u093e\u0926 \u0906\u0938\u093e = \u092f\u093e\u0926 \u0939\u0948 — very close to Hindi!" },
+      { id: "feelings-thoughts-w4", hindi: "Konkani \u0938\u0940\u0916\u0928\u093e \u0905\u091a\u094d\u091b\u093e \u0932\u0917\u0924\u093e \u0939\u0948", konkani: "\u0915\u094b\u0902\u0915\u0923\u0940 \u0936\u093f\u0915\u092a \u092e\u094d\u0939\u093e\u0915\u093e \u092c\u0930\u0947\u0902 \u0926\u093f\u0938\u094d\u0924\u093e", roman: "Konkani Shikap Mhaka Barem Dista", meaning: "I enjoy learning Konkani", tip: "\u0926\u093f\u0938\u094d\u0924\u093e = \u0932\u0917\u0924\u093e \u0939\u0948 \u0964 \u0936\u093f\u0915\u092a = \u0938\u0940\u0916\u0928\u093e \u0964 You've come so far — you can read this whole sentence!" },
     ],
     quiz: [
       { q: "'\u092e\u094b\u0917' \u0915\u093e \u092e\u0924\u0932\u092c?", options: ["\u0926\u0941\u0916", "\u0916\u0941\u0936\u0940", "\u092a\u094d\u092f\u093e\u0930 / \u092e\u094b\u0939\u092c\u094d\u092c\u0924", "\u092f\u093e\u0926"], answer: 2, explanation: "\u092e\u094b\u0917 = \u092a\u094d\u092f\u093e\u0930! '\u0939\u093e\u0902\u0935 \u0924\u0941\u092e\u0915\u093e\u0902 \u092e\u094b\u0917\u0924\u093e' = I love you — Konkani \u0915\u093e \u0938\u092c\u0938\u0947 \u092a\u094d\u092f\u093e\u0930\u093e phrase!" },
@@ -152,14 +154,14 @@ const LESSONS = [
     cultural: "The word 'mog' (love) is central to Konkani identity. Mando — Konkani classical music — beautifully blends Indian and Portuguese musical traditions and is one of the most treasured Konkani art forms."
   },
   {
-    day: 8, theme: "Kriya Rup", themeHindi: "\u0915\u094D\u0930\u093F\u092F\u093E \u0930\u0942\u092A", themeEng: "Present Tense Verbs", emoji: "\ud83c\udfc3",
+    day: 8, id: "present-tense-verbs", order: 8, type: "grammar", theme: "Kriya Rup", themeHindi: "\u0915\u094D\u0930\u093F\u092F\u093E \u0930\u0942\u092A", themeEng: "Present Tense Verbs", emoji: "\ud83c\udfc3",
     intro: "Time to build real sentences! Konkani verbs change their ending based on who's doing the action — much like Hindi, but with its own distinct pattern. Today we crack the code behind every Konkani verb.",
     words: [
-      { hindi: "\u092E\u0948\u0902 \u0916\u093E\u0924\u093E/\u0916\u093E\u0924\u0940 \u0939\u0942\u0901", konkani: "\u091C\u0947\u0935\u0924\u093E\u0902", roman: "Jevtaam", meaning: "I eat (present tense, 1st person)", tip: "The -\u0924\u093E\u0902 ending marks 'I' with almost any verb. \u091C\u0947\u0935\u092A (to eat) \u2192 \u091C\u0947\u0935\u0924\u093E\u0902 (I eat)." },
-      { hindi: "\u0924\u0942 \u0916\u093E\u0924\u093E \u0939\u0948 / \u0935\u094B \u0916\u093E\u0924\u093E/\u0916\u093E\u0924\u0940 \u0939\u0948", konkani: "\u091C\u0947\u0935\u0924\u093E", roman: "Jevta", meaning: "You (informal) eat / he-she eats", tip: "2nd person informal and 3rd person share the same -\u0924\u093E ending \u2014 no \u0924\u093E/\u0924\u0940 gender split like Hindi!" },
-      { hindi: "\u0939\u092E/\u0924\u0941\u092E/\u0935\u094B \u0938\u092C \u0916\u093E\u0924\u0947 \u0939\u0948\u0902", konkani: "\u091C\u0947\u0935\u0924\u093E\u0924\u0940", roman: "Jevtaati", meaning: "We / you (plural-respectful) / they eat", tip: "All plural subjects \u2014 \u0939\u092E, \u0924\u0941\u092E, \u0935\u094B \u2014 share this one -\u0924\u093E\u0924\u0940 ending. Simpler than Hindi's multiple plural forms!" },
-      { hindi: "\u0935\u094B \u0915\u0930\u0924\u093E \u0939\u0948", konkani: "\u0915\u0930\u0924\u093E", roman: "Karta", meaning: "does (\u0915\u0930\u092A = to do, 3rd person form)", tip: "\u0915\u0930\u092A = \u0915\u0930\u0928\u093E. Swap the base for any verb \u2014 this same -\u0924\u093E pattern applies everywhere." },
-      { hindi: "\u092E\u0948\u0902 \u092A\u094D\u092F\u093E\u0930 \u0915\u0930\u0924\u093E/\u0915\u0930\u0924\u0940 \u0939\u0942\u0901", konkani: "\u092E\u094B\u0917 \u0915\u0930\u0924\u093E\u0902", roman: "Mog Kartaam", meaning: "I love (literally: I do love)", tip: "Combine what you know! \u092E\u094B\u0917 (love, Day 7) + \u0915\u0930\u0924\u093E\u0902 (I do) = \u0939\u093E\u0902\u0935...\u092E\u094B\u0917 \u0915\u0930\u0924\u093E\u0902 \u2014 how 'I love you' is built in Konkani." },
+      { id: "present-tense-verbs-w0", hindi: "\u092E\u0948\u0902 \u0916\u093E\u0924\u093E/\u0916\u093E\u0924\u0940 \u0939\u0942\u0901", konkani: "\u091C\u0947\u0935\u0924\u093E\u0902", roman: "Jevtaam", meaning: "I eat (present tense, 1st person)", tip: "The -\u0924\u093E\u0902 ending marks 'I' with almost any verb. \u091C\u0947\u0935\u092A (to eat) \u2192 \u091C\u0947\u0935\u0924\u093E\u0902 (I eat)." },
+      { id: "present-tense-verbs-w1", hindi: "\u0924\u0942 \u0916\u093E\u0924\u093E \u0939\u0948 / \u0935\u094B \u0916\u093E\u0924\u093E/\u0916\u093E\u0924\u0940 \u0939\u0948", konkani: "\u091C\u0947\u0935\u0924\u093E", roman: "Jevta", meaning: "You (informal) eat / he-she eats", tip: "2nd person informal and 3rd person share the same -\u0924\u093E ending \u2014 no \u0924\u093E/\u0924\u0940 gender split like Hindi!" },
+      { id: "present-tense-verbs-w2", hindi: "\u0939\u092E/\u0924\u0941\u092E/\u0935\u094B \u0938\u092C \u0916\u093E\u0924\u0947 \u0939\u0948\u0902", konkani: "\u091C\u0947\u0935\u0924\u093E\u0924\u0940", roman: "Jevtaati", meaning: "We / you (plural-respectful) / they eat", tip: "All plural subjects \u2014 \u0939\u092E, \u0924\u0941\u092E, \u0935\u094B \u2014 share this one -\u0924\u093E\u0924\u0940 ending. Simpler than Hindi's multiple plural forms!" },
+      { id: "present-tense-verbs-w3", hindi: "\u0935\u094B \u0915\u0930\u0924\u093E \u0939\u0948", konkani: "\u0915\u0930\u0924\u093E", roman: "Karta", meaning: "does (\u0915\u0930\u092A = to do, 3rd person form)", tip: "\u0915\u0930\u092A = \u0915\u0930\u0928\u093E. Swap the base for any verb \u2014 this same -\u0924\u093E pattern applies everywhere." },
+      { id: "present-tense-verbs-w4", hindi: "\u092E\u0948\u0902 \u092A\u094D\u092F\u093E\u0930 \u0915\u0930\u0924\u093E/\u0915\u0930\u0924\u0940 \u0939\u0942\u0901", konkani: "\u092E\u094B\u0917 \u0915\u0930\u0924\u093E\u0902", roman: "Mog Kartaam", meaning: "I love (literally: I do love)", tip: "Combine what you know! \u092E\u094B\u0917 (love, Day 7) + \u0915\u0930\u0924\u093E\u0902 (I do) = \u0939\u093E\u0902\u0935...\u092E\u094B\u0917 \u0915\u0930\u0924\u093E\u0902 \u2014 how 'I love you' is built in Konkani." },
     ],
     quiz: [
       { q: "'-\u0924\u093E\u0902' ending \u0915\u093F\u0938\u0915\u0947 \u0932\u093F\u090F use \u0939\u094B\u0924\u0940 \u0939\u0948?", options: ["\u0924\u0942\u0902 (you)", "\u0939\u093E\u0902\u0935 (I)", "\u0924\u094B/\u0924\u0940 (he/she)", "\u0906\u092E\u0940 (we)"], answer: 1, explanation: "-\u0924\u093E\u0902 \u0939\u092E\u0947\u0936\u093E \u0939\u093E\u0902\u0935 (I) \u0915\u0947 \u0938\u093E\u0925 \u0906\u0924\u0940 \u0939\u0948 \u2014 \u091C\u0948\u0938\u0947 \u091C\u0947\u0935\u0924\u093E\u0902, \u092E\u094B\u0917 \u0915\u0930\u0924\u093E\u0902\u0964" },
@@ -172,15 +174,15 @@ const LESSONS = [
     cultural: "Unlike Hindi, most Konkani verb forms don't change with the subject's gender — जेवता serves for both 'he eats' and 'she eats' alike. This makes Konkani conjugation noticeably lighter for Hindi speakers once you've learned the person and number endings."
   },
   {
-    day: 9, theme: "Nakar ani Sawal", themeHindi: "\u0928\u0915\u093E\u0930 \u0914\u0930 \u0938\u0935\u093E\u0932", themeEng: "Negation & Questions", emoji: "\u274c",
+    day: 9, id: "negation-questions", order: 9, type: "grammar", theme: "Nakar ani Sawal", themeHindi: "\u0928\u0915\u093E\u0930 \u0914\u0930 \u0938\u0935\u093E\u0932", themeEng: "Negation & Questions", emoji: "\u274c",
     intro: "Every language needs 'no' and 'why' just as much as 'yes.' Today we learn how Konkani flips a verb into its negative form, plus the key question words you'll reach for constantly.",
     words: [
-      { hindi: "\u0928\u0939\u0940\u0902 \u0915\u0930\u0924\u093E/\u0915\u0930\u0924\u0940", konkani: "\u0915\u0930\u0928\u093E", roman: "Karnaa", meaning: "doesn't do (negative present)", tip: "Negative doesn't just add '\u0928\u0939\u0940\u0902' \u2014 the whole ending changes! \u0915\u0930\u0924\u093E (does) \u2192 \u0915\u0930\u0928\u093E (doesn't do)." },
-      { hindi: "\u0928\u0939\u0940\u0902 \u0932\u0917\u0924\u093E/\u0926\u093F\u0916\u0924\u093E", konkani: "\u0926\u093F\u0938\u0928\u093E", roman: "Disnaa", meaning: "doesn't seem / doesn't appear", tip: "From Day 7's \u0926\u093F\u0938\u0924\u093E (seems/feels) \u2014 flip it to \u0926\u093F\u0938\u0928\u093E for the negative. Same -\u0928\u093E pattern as \u092F\u0947\u0928\u093E (Day 6)!" },
-      { hindi: "\u0928\u0939\u0940\u0902 \u091A\u093E\u0939\u093F\u090F", konkani: "\u0928\u093E\u0915\u093E", roman: "Naaka", meaning: "don't want / not needed", tip: "\u0928\u093E\u0915\u093E is one of the most useful Konkani words \u2014 \u092E\u094D\u0939\u093E\u0915\u093E...\u0928\u093E\u0915\u093E = \u092E\u0941\u091D\u0947...\u0928\u0939\u0940\u0902 \u091A\u093E\u0939\u093F\u090F\u0964" },
-{ hindi: "\u0915\u0939\u093E\u0901", konkani: "\u0916\u0902\u092F", roman: "Khoy", meaning: "Where", tip: "\u0916\u0902\u092F = \u0915\u0939\u093E\u0901\u0964 Its cousin \u0916\u0902\u091A\u0947\u0902 (which) is a separate card, appended below \u2014 don't mix them up!" },
-      { hindi: "\u0915\u092C", konkani: "\u0915\u0947\u0926\u0928\u093E\u0902", roman: "Kednaa", meaning: "when", tip: "\u0915\u0947\u0926\u0928\u093E\u0902 = \u0915\u092C\u0964 \u091C\u0948\u0938\u0947 '\u092A\u0930\u0940\u0915\u094D\u0937\u093E \u0915\u0947\u0926\u0928\u093E\u0902 \u0906\u0938\u093E?' = \u092A\u0930\u0940\u0915\u094D\u0937\u093E \u0915\u092C \u0939\u0948?" },
-      { hindi: "\u0915\u094C\u0928-\u0938\u093E", konkani: "\u0916\u0902\u091A\u0947\u0902", roman: "Khanchem", meaning: "Which", tip: "\u0916\u0902\u091A\u0947\u0902 = \u0915\u094C\u0928-\u0938\u093E\u0964 Distinct from \u0916\u0902\u092F (where) even though they look similar." }
+      { id: "negation-questions-w0", hindi: "\u0928\u0939\u0940\u0902 \u0915\u0930\u0924\u093E/\u0915\u0930\u0924\u0940", konkani: "\u0915\u0930\u0928\u093E", roman: "Karnaa", meaning: "doesn't do (negative present)", tip: "Negative doesn't just add '\u0928\u0939\u0940\u0902' \u2014 the whole ending changes! \u0915\u0930\u0924\u093E (does) \u2192 \u0915\u0930\u0928\u093E (doesn't do)." },
+      { id: "negation-questions-w1", hindi: "\u0928\u0939\u0940\u0902 \u0932\u0917\u0924\u093E/\u0926\u093F\u0916\u0924\u093E", konkani: "\u0926\u093F\u0938\u0928\u093E", roman: "Disnaa", meaning: "doesn't seem / doesn't appear", tip: "From Day 7's \u0926\u093F\u0938\u0924\u093E (seems/feels) \u2014 flip it to \u0926\u093F\u0938\u0928\u093E for the negative. Same -\u0928\u093E pattern as \u092F\u0947\u0928\u093E (Day 6)!" },
+      { id: "negation-questions-w2", hindi: "\u0928\u0939\u0940\u0902 \u091A\u093E\u0939\u093F\u090F", konkani: "\u0928\u093E\u0915\u093E", roman: "Naaka", meaning: "don't want / not needed", tip: "\u0928\u093E\u0915\u093E is one of the most useful Konkani words \u2014 \u092E\u094D\u0939\u093E\u0915\u093E...\u0928\u093E\u0915\u093E = \u092E\u0941\u091D\u0947...\u0928\u0939\u0940\u0902 \u091A\u093E\u0939\u093F\u090F\u0964" },
+{ id: "negation-questions-w3", hindi: "\u0915\u0939\u093E\u0901", konkani: "\u0916\u0902\u092F", roman: "Khoy", meaning: "Where", tip: "\u0916\u0902\u092F = \u0915\u0939\u093E\u0901\u0964 Its cousin \u0916\u0902\u091A\u0947\u0902 (which) is a separate card, appended below \u2014 don't mix them up!" },
+      { id: "negation-questions-w4", hindi: "\u0915\u092C", konkani: "\u0915\u0947\u0926\u0928\u093E\u0902", roman: "Kednaa", meaning: "when", tip: "\u0915\u0947\u0926\u0928\u093E\u0902 = \u0915\u092C\u0964 \u091C\u0948\u0938\u0947 '\u092A\u0930\u0940\u0915\u094D\u0937\u093E \u0915\u0947\u0926\u0928\u093E\u0902 \u0906\u0938\u093E?' = \u092A\u0930\u0940\u0915\u094D\u0937\u093E \u0915\u092C \u0939\u0948?" },
+      { id: "negation-questions-w5", hindi: "\u0915\u094C\u0928-\u0938\u093E", konkani: "\u0916\u0902\u091A\u0947\u0902", roman: "Khanchem", meaning: "Which", tip: "\u0916\u0902\u091A\u0947\u0902 = \u0915\u094C\u0928-\u0938\u093E\u0964 Distinct from \u0916\u0902\u092F (where) even though they look similar." }
     ],
     quiz: [
       { q: "Konkani \u092E\u0947\u0902 verb \u0915\u094B negative \u0915\u0948\u0938\u0947 \u092C\u0928\u093E\u0924\u0947 \u0939\u0948\u0902?", options: ["'\u0928\u0939\u0940\u0902' \u0936\u092C\u094D\u0926 \u091C\u094B\u0921\u093C \u0915\u0947", "verb \u0915\u0940 \u092A\u0942\u0930\u0940 ending \u092C\u0926\u0932 \u0915\u0947", "verb \u0915\u094B sentence \u0938\u0947 \u0939\u091F\u093E \u0915\u0947", "\u0915\u0941\u091B \u0928\u0939\u0940\u0902 \u092C\u0926\u0932\u0924\u093E"], answer: 1, explanation: "Hindi \u0938\u0947 \u0905\u0932\u0917! Konkani \u092E\u0947\u0902 \u092A\u0942\u0930\u0940 ending \u092C\u0926\u0932 \u091C\u093E\u0924\u0940 \u0939\u0948 \u2014 \u0915\u0930\u0924\u093E \u2192 \u0915\u0930\u0928\u093E, \u092F\u0947\u0924\u093E \u2192 \u092F\u0947\u0928\u093E\u0964" },
@@ -193,18 +195,18 @@ const LESSONS = [
     cultural: "The -ना negation pattern is one of Konkani's most distinctive features — rather than inserting a separate word like Hindi's नहीं, the verb itself transforms into its negative form. You'll notice this same -ना ending across nearly every negated verb, making it one of the most reliable patterns to hold onto as you build sentences."
   },
   {
-    day: 10, theme: "Sarvanam ke Roop", themeHindi: "\u0938\u0930\u094D\u0935\u0928\u093E\u092E \u0915\u0947 \u0930\u0942\u092A", themeEng: "Pronoun Forms & Sentences", emoji: "\ud83e\udde9",
+    day: 10, id: "pronoun-forms", order: 10, type: "grammar", theme: "Sarvanam ke Roop", themeHindi: "\u0938\u0930\u094D\u0935\u0928\u093E\u092E \u0915\u0947 \u0930\u0942\u092A", themeEng: "Pronoun Forms & Sentences", emoji: "\ud83e\udde9",
     intro: "Time to combine everything! Konkani pronouns change shape depending on their role in a sentence — 'I' becomes 'to me' or 'my' in different forms. Today's words unlock full, natural sentences.",
     words: [
-      { hindi: "\u0924\u0941\u091D\u0947 / \u0924\u0941\u092E\u0915\u094B", konkani: "\u0924\u0941\u0915\u093E", roman: "Tuka", meaning: "to you (informal)", tip: "\u0924\u0941\u0915\u093E is the informal partner to \u092E\u094D\u0939\u093E\u0915\u093E (Day 3, 'to me'). \u0924\u0941\u0915\u093E...\u092F\u0947\u0924\u093E? = \u0924\u0941\u091D\u0947...\u0906\u0924\u093E \u0939\u0948?" },
-{ hindi: "\u092E\u0947\u0930\u093E \u092D\u093E\u0908", konkani: "\u092E\u093E\u091D\u094B \u092D\u093E\u0935", roman: "Maajho Bhaav", meaning: "My brother (\u092E\u093E\u091D\u094B = masculine possessive)", tip: "\u092E\u093E\u091D\u094B agrees with \u092D\u093E\u0935 (masculine). The same 'my' becomes \u092E\u093E\u091D\u0940 or \u092E\u093E\u091D\u0947\u0902 for other nouns \u2014 separate cards below." },
-{ hindi: "\u0924\u0947\u0930\u093E \u092D\u093E\u0908", konkani: "\u0924\u0941\u091C\u094B \u092D\u093E\u0935", roman: "Tujo Bhaav", meaning: "Your brother (informal, \u0924\u0941\u091C\u094B = masculine)", tip: "\u0924\u0941\u091C\u094B mirrors \u092E\u093E\u091D\u094B \u2014 swap \u092E\u093E\u2192\u0924\u0941 for the informal 'your'." },
-      { hindi: "\u0938\u0939\u0940 / \u0920\u0940\u0915", konkani: "\u0938\u093E\u092E\u093E", roman: "Sama", meaning: "correct", tip: "\u0939\u0947\u0902 \u0938\u093E\u092E\u093E \u0906\u0938\u093E \u0935\u093E? = \u0915\u094D\u092F\u093E \u092F\u0939 \u0938\u0939\u0940 \u0939\u0948? \u2014 \u0928\u0940\u091A\u0947 \u0935\u093E\u0932\u0947 '\u0935\u093E' \u092A\u0930 \u0927\u094D\u092F\u093E\u0928 \u0926\u0947\u0902!" },
-      { hindi: "\u0915\u094D\u092F\u093E...? (\u0939\u093E\u0901/\u0928\u093E \u0938\u0935\u093E\u0932)", konkani: "\u0935\u093E", roman: "Vaa", meaning: "yes/no question marker", tip: "\u0935\u093E \u0915\u094B \u0915\u093F\u0938\u0940 \u092D\u0940 sentence \u0915\u0947 \u0905\u0902\u0924 \u092E\u0947\u0902 \u0932\u0917\u093E\u0915\u0930 \u0909\u0938\u0947 \u0939\u093E\u0901/\u0928\u093E \u0938\u0935\u093E\u0932 \u092C\u0928\u093E \u0926\u0947\u0924\u0947 \u0939\u0948\u0902 \u2014 \u091C\u0948\u0938\u0947 Hindi \u0915\u093E '\u0915\u094D\u092F\u093E' \u0938\u0935\u093E\u0932 \u0915\u0940 \u0936\u0941\u0930\u0941\u0906\u0924 \u092E\u0947\u0902\u0964" },
-      { hindi: "\u092E\u0947\u0930\u0940 \u092C\u0939\u0928", konkani: "\u092E\u093E\u091D\u0940 \u092D\u092F\u0923", roman: "Maajhi Bhayan", meaning: "My sister (\u092E\u093E\u091D\u0940 = feminine possessive)", tip: "\u092E\u093E\u091D\u0940 agrees with \u092D\u092F\u0923 (feminine) \u2014 the same word 'my' shape-shifts by the noun owned, not by you." },
-      { hindi: "\u092E\u0947\u0930\u093E \u0918\u0930", konkani: "\u092E\u093E\u091D\u0947\u0902 \u0918\u0930", roman: "Maajhem Ghar", meaning: "My house (\u092E\u093E\u091D\u0947\u0902 = neuter/other possessive)", tip: "\u092E\u093E\u091D\u0947\u0902 agrees with \u0918\u0930 \u2014 the third possessive form to round out the set." },
-      { hindi: "\u0924\u0947\u0930\u0940 \u092C\u0939\u0928", konkani: "\u0924\u0941\u091C\u0940 \u092D\u092F\u0923", roman: "Tuji Bhayan", meaning: "Your sister (informal, \u0924\u0941\u091C\u0940 = feminine)", tip: "\u0924\u0941\u091C\u0940 mirrors \u092E\u093E\u091D\u0940 \u2014 same gender-agreement rule, just for 'your'." },
-      { hindi: "\u0924\u0947\u0930\u093E \u0918\u0930", konkani: "\u0924\u0941\u091C\u0947\u0902 \u0918\u0930", roman: "Tujem Ghar", meaning: "Your house (informal, \u0924\u0941\u091C\u0947\u0902 = neuter/other)", tip: "\u0924\u0941\u091C\u0947\u0902 mirrors \u092E\u093E\u091D\u0947\u0902 \u2014 completes the 'your' possessive trio." }
+      { id: "pronoun-forms-w0", hindi: "\u0924\u0941\u091D\u0947 / \u0924\u0941\u092E\u0915\u094B", konkani: "\u0924\u0941\u0915\u093E", roman: "Tuka", meaning: "to you (informal)", tip: "\u0924\u0941\u0915\u093E is the informal partner to \u092E\u094D\u0939\u093E\u0915\u093E (Day 3, 'to me'). \u0924\u0941\u0915\u093E...\u092F\u0947\u0924\u093E? = \u0924\u0941\u091D\u0947...\u0906\u0924\u093E \u0939\u0948?" },
+{ id: "pronoun-forms-w1", hindi: "\u092E\u0947\u0930\u093E \u092D\u093E\u0908", konkani: "\u092E\u093E\u091D\u094B \u092D\u093E\u0935", roman: "Maajho Bhaav", meaning: "My brother (\u092E\u093E\u091D\u094B = masculine possessive)", tip: "\u092E\u093E\u091D\u094B agrees with \u092D\u093E\u0935 (masculine). The same 'my' becomes \u092E\u093E\u091D\u0940 or \u092E\u093E\u091D\u0947\u0902 for other nouns \u2014 separate cards below." },
+{ id: "pronoun-forms-w2", hindi: "\u0924\u0947\u0930\u093E \u092D\u093E\u0908", konkani: "\u0924\u0941\u091C\u094B \u092D\u093E\u0935", roman: "Tujo Bhaav", meaning: "Your brother (informal, \u0924\u0941\u091C\u094B = masculine)", tip: "\u0924\u0941\u091C\u094B mirrors \u092E\u093E\u091D\u094B \u2014 swap \u092E\u093E\u2192\u0924\u0941 for the informal 'your'." },
+      { id: "pronoun-forms-w3", hindi: "\u0938\u0939\u0940 / \u0920\u0940\u0915", konkani: "\u0938\u093E\u092E\u093E", roman: "Sama", meaning: "correct", tip: "\u0939\u0947\u0902 \u0938\u093E\u092E\u093E \u0906\u0938\u093E \u0935\u093E? = \u0915\u094D\u092F\u093E \u092F\u0939 \u0938\u0939\u0940 \u0939\u0948? \u2014 \u0928\u0940\u091A\u0947 \u0935\u093E\u0932\u0947 '\u0935\u093E' \u092A\u0930 \u0927\u094D\u092F\u093E\u0928 \u0926\u0947\u0902!" },
+      { id: "pronoun-forms-w4", hindi: "\u0915\u094D\u092F\u093E...? (\u0939\u093E\u0901/\u0928\u093E \u0938\u0935\u093E\u0932)", konkani: "\u0935\u093E", roman: "Vaa", meaning: "yes/no question marker", tip: "\u0935\u093E \u0915\u094B \u0915\u093F\u0938\u0940 \u092D\u0940 sentence \u0915\u0947 \u0905\u0902\u0924 \u092E\u0947\u0902 \u0932\u0917\u093E\u0915\u0930 \u0909\u0938\u0947 \u0939\u093E\u0901/\u0928\u093E \u0938\u0935\u093E\u0932 \u092C\u0928\u093E \u0926\u0947\u0924\u0947 \u0939\u0948\u0902 \u2014 \u091C\u0948\u0938\u0947 Hindi \u0915\u093E '\u0915\u094D\u092F\u093E' \u0938\u0935\u093E\u0932 \u0915\u0940 \u0936\u0941\u0930\u0941\u0906\u0924 \u092E\u0947\u0902\u0964" },
+      { id: "pronoun-forms-w5", hindi: "\u092E\u0947\u0930\u0940 \u092C\u0939\u0928", konkani: "\u092E\u093E\u091D\u0940 \u092D\u092F\u0923", roman: "Maajhi Bhayan", meaning: "My sister (\u092E\u093E\u091D\u0940 = feminine possessive)", tip: "\u092E\u093E\u091D\u0940 agrees with \u092D\u092F\u0923 (feminine) \u2014 the same word 'my' shape-shifts by the noun owned, not by you." },
+      { id: "pronoun-forms-w6", hindi: "\u092E\u0947\u0930\u093E \u0918\u0930", konkani: "\u092E\u093E\u091D\u0947\u0902 \u0918\u0930", roman: "Maajhem Ghar", meaning: "My house (\u092E\u093E\u091D\u0947\u0902 = neuter/other possessive)", tip: "\u092E\u093E\u091D\u0947\u0902 agrees with \u0918\u0930 \u2014 the third possessive form to round out the set." },
+      { id: "pronoun-forms-w7", hindi: "\u0924\u0947\u0930\u0940 \u092C\u0939\u0928", konkani: "\u0924\u0941\u091C\u0940 \u092D\u092F\u0923", roman: "Tuji Bhayan", meaning: "Your sister (informal, \u0924\u0941\u091C\u0940 = feminine)", tip: "\u0924\u0941\u091C\u0940 mirrors \u092E\u093E\u091D\u0940 \u2014 same gender-agreement rule, just for 'your'." },
+      { id: "pronoun-forms-w8", hindi: "\u0924\u0947\u0930\u093E \u0918\u0930", konkani: "\u0924\u0941\u091C\u0947\u0902 \u0918\u0930", roman: "Tujem Ghar", meaning: "Your house (informal, \u0924\u0941\u091C\u0947\u0902 = neuter/other)", tip: "\u0924\u0941\u091C\u0947\u0902 mirrors \u092E\u093E\u091D\u0947\u0902 \u2014 completes the 'your' possessive trio." }
     ],
     quiz: [
       { q: "'\u0924\u0941\u0915\u093E' \u0915\u093E \u092E\u0924\u0932\u092C \u0915\u094D\u092F\u093E \u0939\u0948?", options: ["\u0924\u0941\u092E\u094D\u0939\u093E\u0930\u093E", "\u0924\u0941\u091D\u0947 / \u0924\u0941\u092E\u0915\u094B", "\u0924\u0942 \u0916\u0941\u0926", "\u0924\u0941\u092E \u0938\u092C"], answer: 1, explanation: "\u0924\u0941\u0915\u093E = \u0924\u0941\u091D\u0947/\u0924\u0941\u092E\u0915\u094B (to you)\u0964 \u092E\u094D\u0939\u093E\u0915\u093E (to me) \u0915\u093E \u091C\u094B\u0921\u093C\u0940\u0926\u093E\u0930 \u0936\u092C\u094D\u0926!" },
@@ -217,6 +219,63 @@ const LESSONS = [
     cultural: "Konkani possessives (माझो/माझी/माझें, तुजो/तुजी/तुजें) agree with the gender of the thing owned rather than the owner — a pattern shared with Hindi's मेरा/मेरी/मेरे, but applied consistently across every possessive pronoun in the language."
   }
 ];
+
+// ─── Identity lookups (id is now the persisted key, NOT array position) ────
+// LESSONS array order is purely a fallback/default display order. Actual
+// sequencing for gating/navigation uses .order, so LESSONS can be freely
+// reordered (or split-inserted) in the future without touching persisted data.
+const LESSONS_BY_ID = Object.fromEntries(LESSONS.map(l => [l.id, l]));
+const SORTED_LESSONS = [...LESSONS].sort((a, b) => a.order - b.order);
+
+function wordById(lessonId, wordId) {
+  const lesson = LESSONS_BY_ID[lessonId];
+  if (!lesson) return null;
+  return lesson.words.find(w => w.id === wordId) || null;
+}
+
+// ─── Progress schema migration (v1 index-keyed → v2 id-keyed) ──────────────
+// v1 shape:  { "0": {score,total,completedAt}, "1": {...}, srs: {"0:2": {...}},
+//              onboarded, streak }
+// v2 shape:  { schemaVersion: 2, lessons: { greetings: {...} },
+//              srs: { "greetings:greetings-w2": {...} }, onboarded, streak }
+//
+// The v1→v2 key mapping depends on LESSONS still being in its ORIGINAL array
+// order at the moment this runs (index N must still mean "the Nth lesson as
+// it was when this progress was earned"). Once every user has migrated,
+// LESSONS can be reordered freely — this function's job is done at that point
+// but is left in place permanently since it's a no-op for already-migrated data.
+const CURRENT_SCHEMA_VERSION = 2;
+
+function migrateProgress(old) {
+  if (!old || old.schemaVersion === CURRENT_SCHEMA_VERSION) return old || { schemaVersion: CURRENT_SCHEMA_VERSION, lessons: {}, srs: {} };
+
+  const migrated = { schemaVersion: CURRENT_SCHEMA_VERSION, lessons: {}, srs: {} };
+
+  Object.keys(old).forEach(key => {
+    if (key === "srs") {
+      Object.keys(old.srs || {}).forEach(oldId => {
+        const [dayIdxStr, wordIdxStr] = oldId.split(":");
+        const dayIdx = Number(dayIdxStr), wordIdx = Number(wordIdxStr);
+        const lesson = LESSONS[dayIdx];
+        const word = lesson?.words[wordIdx];
+        if (lesson && word) {
+          migrated.srs[`${lesson.id}:${word.id}`] = old.srs[oldId];
+        }
+        // if lesson/word no longer exists at that index, the entry is silently
+        // dropped — acceptable, it just means that word gets re-seeded fresh
+        // next time its lesson is completed.
+      });
+    } else if (key === "onboarded" || key === "streak") {
+      migrated[key] = old[key];
+    } else if (/^\d+$/.test(key)) {
+      // numeric string = old day-index key
+      const lesson = LESSONS[Number(key)];
+      if (lesson) migrated.lessons[lesson.id] = old[key];
+    }
+  });
+
+  return migrated;
+}
 
 function shuffle(arr) {
   const a = [...arr];
@@ -232,7 +291,7 @@ function shuffleQuiz(questions) {
 }
 
 // ─── Spaced Repetition (simplified SM-2) ───────────────────────────────────
-const SRS_INTERVALS = [1, 3, 7, 16, 35, 90]; // hours, indexed by consecutive correct reps
+const SRS_INTERVALS = [1, 3, 7, 16, 35, 90, 216, 504, 1080, 2160, 4320]; // hours: ~1h to ~180d, indexed by consecutive correct reps
 
 function nextSrsState(entry, correct) {
   const now = new Date();
@@ -247,10 +306,10 @@ function nextSrsState(entry, correct) {
   }
 }
 
-function seedSrsForDay(dayIdx, prevProgress) {
+function seedSrsForLesson(lesson, prevProgress) {
   const srs = { ...(prevProgress.srs || {}) };
-  LESSONS[dayIdx].words.forEach((w, wi) => {
-    const id = dayIdx + ":" + wi;
+  lesson.words.forEach(w => {
+    const id = `${lesson.id}:${w.id}`;
     if (!srs[id]) srs[id] = { reps: 0, interval: 1, dueDate: new Date().toISOString() };
   });
   return srs;
@@ -262,13 +321,33 @@ function getDueWords(progress) {
   const due = [];
   Object.keys(srs).forEach(id => {
     if (new Date(srs[id].dueDate) <= now) {
-      const [di, wi] = id.split(":").map(Number);
-      if (LESSONS[di] && LESSONS[di].words[wi]) {
-        due.push({ id, dayIdx: di, wordIdx: wi, word: LESSONS[di].words[wi], theme: LESSONS[di].themeHindi });
+      const [lessonId, wordId] = id.split(":");
+      const lesson = LESSONS_BY_ID[lessonId];
+      const word = lesson && wordById(lessonId, wordId);
+      if (lesson && word) {
+        due.push({ id, lessonId, wordId, word, theme: lesson.themeHindi });
       }
     }
   });
   return due;
+}
+
+// ─── Daily streak (consecutive calendar days with ≥1 engagement) ───────────
+// Uses LOCAL calendar day, not UTC — a streak should follow the learner's
+// own day boundary, not an arbitrary timezone offset.
+function localDateStr(d) {
+  d = d || new Date();
+  const y = d.getFullYear(), m = String(d.getMonth() + 1).padStart(2, "0"), day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+function updateStreak(progress) {
+  const today = localDateStr();
+  const prev = progress.streak || { lastActiveDate: null, current: 0, longest: 0 };
+  if (prev.lastActiveDate === today) return prev; // already counted today, idempotent
+  const yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1);
+  const current = prev.lastActiveDate === localDateStr(yesterday) ? prev.current + 1 : 1;
+  return { lastActiveDate: today, current, longest: Math.max(prev.longest || 0, current) };
 }
 
 // ─── Typed-recall matching (Roman transliteration, tolerant of minor typos) ─
