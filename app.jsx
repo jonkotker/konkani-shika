@@ -6,9 +6,22 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 // rather than blindly trusting one side — protects against a stale/empty cloud
 // copy silently overwriting real local progress (or vice versa).
 function mergeProgress(local, cloud) {
-  const merged = { ...local };
+  const merged = { ...local, schemaVersion: CURRENT_SCHEMA_VERSION };
   Object.keys(cloud || {}).forEach(key => {
-    if (key === "srs") {
+    if (key === "schemaVersion") return; // handled above, not a data field
+    if (key === "lessons") {
+      const localLessons = local.lessons || {};
+      const cloudLessons = cloud.lessons || {};
+      const mergedLessons = { ...localLessons };
+      Object.keys(cloudLessons).forEach(lessonId => {
+        const c = cloudLessons[lessonId], l = localLessons[lessonId];
+        if (!l || (c.score ?? 0) > (l.score ?? 0) ||
+            (c.completedAt && l.completedAt && new Date(c.completedAt) > new Date(l.completedAt))) {
+          mergedLessons[lessonId] = c;
+        }
+      });
+      merged.lessons = mergedLessons;
+    } else if (key === "srs") {
       const localSrs = local.srs || {};
       const cloudSrs = cloud.srs || {};
       const mergedSrs = { ...localSrs };
@@ -21,12 +34,12 @@ function mergeProgress(local, cloud) {
       merged.srs = mergedSrs;
     } else if (key === "onboarded") {
       merged.onboarded = local.onboarded || cloud.onboarded;
-    } else {
-      const c = cloud[key], l = local[key];
-      if (!l) merged[key] = c;
-      else if (c && ((c.score ?? 0) > (l.score ?? 0) ||
-               (c.completedAt && l.completedAt && new Date(c.completedAt) > new Date(l.completedAt)))) {
-        merged[key] = c;
+    } else if (key === "streak") {
+      const c = cloud.streak, l = local.streak;
+      if (!l) merged.streak = c;
+      else if (c && (new Date(c.lastActiveDate) > new Date(l.lastActiveDate) ||
+               (c.lastActiveDate === l.lastActiveDate && c.current > l.current))) {
+        merged.streak = c;
       }
     }
   });
@@ -37,6 +50,20 @@ function App() {
   const [user, setUser] = React.useState(null);
   const [authLoading, setAuthLoading] = React.useState(true);
   const [syncing, setSyncing] = React.useState(false);
+
+  // No Konkani TTS voice exists in any browser. Marathi is the closest available
+  // approximation (same script, closely related Indo-Aryan phonology); falls back
+  // to Hindi if no Marathi voice is installed, since something is better than nothing.
+  function speak(text) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    const voices = window.speechSynthesis.getVoices();
+    const marathi = voices.find(v => v.lang === "mr-IN");
+    u.lang = marathi ? "mr-IN" : "hi-IN";
+    if (marathi) u.voice = marathi;
+    window.speechSynthesis.speak(u);
+  }
 
   React.useEffect(() => {
     sb.auth.getSession().then(({ data: { session } }) => {
@@ -55,8 +82,8 @@ function App() {
   function signOut() { sb.auth.signOut(); }
 
   const [progress, setProgress] = React.useState(() => {
-    try { const s = localStorage.getItem("konkani-progress"); return s ? JSON.parse(s) : {}; }
-    catch(e) { return {}; }
+    try { const s = localStorage.getItem("konkani-progress"); return migrateProgress(s ? JSON.parse(s) : null); }
+    catch(e) { return migrateProgress(null); }
   });
 
   React.useEffect(() => {
@@ -66,7 +93,8 @@ function App() {
       .then(({ data, error }) => {
         if (error) console.error("Supabase read failed:", error);
         if (data && data.data) {
-          const merged = mergeProgress(progress, data.data);
+          const cloudMigrated = migrateProgress(data.data);
+          const merged = mergeProgress(progress, cloudMigrated);
           setProgress(merged);
           try { localStorage.setItem("konkani-progress", JSON.stringify(merged)); } catch(e) {}
           sb.from("progress").upsert({ user_id: user.id, data: merged }).then(({ error }) => {
@@ -82,7 +110,7 @@ function App() {
   }, [user]);
 
   const [screen, setScreen] = React.useState("home");
-  const [dayIdx, setDayIdx] = React.useState(null);
+  const [lessonId, setLessonId] = React.useState(null);
   const [phase, setPhase] = React.useState("intro");
   const [wordIdx, setWordIdx] = React.useState(0);
   const [flipped, setFlipped] = React.useState(false);
@@ -95,18 +123,19 @@ function App() {
   const [typeCorrect, setTypeCorrect] = React.useState(false);
   const [typeResults, setTypeResults] = React.useState([]);
 
-  const done = Object.keys(progress).length;
+  const done = Object.keys(progress.lessons || {}).length;
 
   const [shuffledQuiz, setShuffledQuiz] = React.useState([]);
-  function startDay(i) {
-    setDayIdx(i);setPhase("intro");setWordIdx(0);setFlipped(false);
-    setShuffledQuiz(shuffleQuiz(LESSONS[i].quiz));
+  function startLesson(id) {
+    const lesson = LESSONS_BY_ID[id];
+    setLessonId(id);setPhase("intro");setWordIdx(0);setFlipped(false);
+    setShuffledQuiz(shuffleQuiz(lesson.quiz));
     setQuizIdx(0);setChosen(null);setScore(0);setScreen("lesson");
     setTypeIdx(0);setTypedValue("");setTypeSubmitted(false);setTypeCorrect(false);setTypeResults([]);
   }
   function answerQ(i) { if(chosen!==null)return; setChosen(i); }
   function checkTyped() {
-    const L=LESSONS[dayIdx];
+    const L=LESSONS_BY_ID[lessonId];
     const w=L.words[typeIdx];
     const correct = matchesRoman(typedValue, w.roman);
     setTypeCorrect(correct);
@@ -114,7 +143,7 @@ function App() {
     setTypeResults(r => [...r, correct]);
   }
   function nextTyped() {
-    const L=LESSONS[dayIdx];
+    const L=LESSONS_BY_ID[lessonId];
     if (typeIdx < L.words.length - 1) {
       setTypeIdx(i => i + 1);
       setTypedValue("");
@@ -137,7 +166,7 @@ function App() {
     }
   }
   function nextQ() {
-    const L=LESSONS[dayIdx];
+    const L=LESSONS_BY_ID[lessonId];
     const queue=(shuffledQuiz.length?shuffledQuiz:L.quiz);
     const Qcur=queue[quizIdx];
     const ok=chosen===Qcur.answer;
@@ -149,8 +178,9 @@ function App() {
     }
     if(quizIdx<newQueue.length-1){setScore(ns);setChosen(null);setQuizIdx(q=>q+1);}
     else{
-      const newSrs = seedSrsForDay(dayIdx, progress);
-      const newP = {...progress,[dayIdx]:{score:ns,total:L.quiz.length,completedAt:new Date().toISOString()},srs:newSrs};
+      const newSrs = seedSrsForLesson(L, progress);
+      const newStreak = updateStreak(progress);
+      const newP = {...progress, lessons:{...progress.lessons,[L.id]:{score:ns,total:L.quiz.length,completedAt:new Date().toISOString()}}, srs:newSrs, streak:newStreak};
       saveProgress(newP);
       setScore(ns);setChosen(null);setPhase("result");
     }
@@ -177,7 +207,8 @@ function App() {
     const prevEntry = (progress.srs || {})[item.id];
     const newEntry = nextSrsState(prevEntry, correct);
     const newSrs = {...(progress.srs || {}), [item.id]: newEntry};
-    const newP = {...progress, srs: newSrs};
+    const newStreak = updateStreak(progress); // idempotent per calendar day — safe to call every card
+    const newP = {...progress, srs: newSrs, streak: newStreak};
     saveProgress(newP);
     setReviewStats(s => ({correct: s.correct + (correct?1:0), total: s.total + 1}));
     setReviewFlipped(false);
@@ -206,7 +237,12 @@ function App() {
       <div className="app-wrap">
         <div className="top-bar top-bar--home w-580">
           <div className="brand">Konkani Shika</div>
-          <div className="badge badge--lg">{done} / {LESSONS.length} days</div>
+          <div style={{display:"flex",gap:8,alignItems:"center"}}>
+            {progress.streak?.current > 0 && (
+              <div className="badge badge--lg" style={{background:"rgba(212,107,8,0.2)"}}>🔥 {progress.streak.current} din ki streak</div>
+            )}
+            <div className="badge badge--lg">{done} / {LESSONS.length} days</div>
+          </div>
         </div>
         <div className="auth-row w-580">
           {authLoading ? null : user ? (
@@ -229,7 +265,7 @@ function App() {
           </div>
           <div className="progress-row">
             <div className="label-caps">{done} / {LESSONS.length} पूरे</div>
-            {done>0&&<button onClick={()=>{if(window.confirm("Reset all progress?")){saveProgress({});}}} className="btn-link">रीसेट करें</button>}
+            {done>0&&<button onClick={()=>{if(window.confirm("Reset all progress?")){saveProgress({schemaVersion:CURRENT_SCHEMA_VERSION,lessons:{},srs:{}});}}} className="btn-link">रीसेट करें</button>}
           </div>
           {(() => {
             const dueCount = getDueWords(progress).length;
@@ -246,13 +282,16 @@ function App() {
             );
           })()}
           <div className="day-list">
-            {LESSONS.map((L,i)=>{
-              const d=!!progress[i], nx=!d&&(i===0||!!progress[i-1]), lk=!d&&!nx, p=progress[i];
+            {SORTED_LESSONS.map((L,i)=>{
+              const d=!!progress.lessons?.[L.id];
+              const prevLesson=SORTED_LESSONS[i-1];
+              const nx=!d&&(i===0||!!progress.lessons?.[prevLesson.id]);
+              const lk=!d&&!nx, p=progress.lessons?.[L.id];
               const rowClass = "day-row" + (d?" day-row--done":nx?" day-row--next":"") + (lk?" day-row--locked":"");
-              return <div key={i} onClick={()=>!lk&&startDay(i)} className={rowClass}>
+              return <div key={L.id} onClick={()=>!lk&&startLesson(L.id)} className={rowClass}>
                 <div className="day-emoji">{L.emoji}</div>
                 <div className="day-info">
-                  <div className="day-num">Day {i+1}</div>
+                  <div className="day-num">Day {L.order}</div>
                   <div className="day-theme">{L.themeHindi}</div>
                   <div className="day-meta">{L.themeEng} · {L.words.length} शब्द</div>
                 </div>
@@ -261,7 +300,7 @@ function App() {
                   {nx&&<span className="pill pill--next">start</span>}
                   {lk&&<span className="pill pill--locked">लॉक</span>}
                   {d&&p&&<span className="pill-note">{p.score}/{p.total} quiz</span>}
-                  {d&&<button onClick={e=>{e.stopPropagation();startDay(i);}} className="btn-link">दोबारा करें</button>}
+                  {d&&<button onClick={e=>{e.stopPropagation();startLesson(L.id);}} className="btn-link">दोबारा करें</button>}
                 </div>
               </div>;
             })}
@@ -298,6 +337,7 @@ function App() {
                 </div>
                 <div className="flip-face flip-face--back accent-blue">
                   <div className="flip-back-text accent-blue">{item.word.konkani}</div>
+                  <button className="speak-btn" onClick={e=>{e.stopPropagation();speak(item.word.konkani);}}>🔊</button>
                   <div className="flip-back-roman">{item.word.roman}</div>
                   <div className="flip-back-meaning">{item.word.meaning}</div>
                 </div>
@@ -341,9 +381,11 @@ function App() {
   }
 
   // ── LESSON ──────────────────────────────────────────────────────────────
-  const L=LESSONS[dayIdx], W=L.words[wordIdx], Q=(shuffledQuiz.length?shuffledQuiz:L.quiz)[quizIdx];
+  const L=LESSONS_BY_ID[lessonId], W=L.words[wordIdx], Q=(shuffledQuiz.length?shuffledQuiz:L.quiz)[quizIdx];
   const phases=["intro","learn","type","quiz","result"], pi=phases.indexOf(phase);
-  const fs=progress[dayIdx]?.score??score;
+  const fs=progress.lessons?.[L.id]?.score??score;
+  const sortedIdx = SORTED_LESSONS.findIndex(x => x.id === L.id);
+  const nextLesson = SORTED_LESSONS[sortedIdx + 1] || null;
 
   return (
     <div className="app-wrap">
@@ -355,7 +397,7 @@ function App() {
         <div className="phase-dots">
           {phases.map((p,i)=><div key={p} className={"dot" + (i===pi?" active":i<pi?" done":"")} />)}
         </div>
-        <div className="badge" style={{marginLeft:"auto"}}>Day {dayIdx+1}</div>
+        <div className="badge" style={{marginLeft:"auto"}}>Day {L.order}</div>
       </div>
 
       {phase==="intro"&&<div className="card w-560">
@@ -384,6 +426,7 @@ function App() {
             </div>
             <div className="flip-face flip-face--back accent-orange">
               <div className="flip-back-text accent-orange">{W.konkani}</div>
+              <button className="speak-btn" onClick={e=>{e.stopPropagation();speak(W.konkani);}}>🔊</button>
               <div className="flip-back-roman">{W.roman}</div>
               <div className="flip-back-meaning">{W.meaning}</div>
             </div>
@@ -487,9 +530,9 @@ function App() {
           </div>
         ))}
         <div className="result-actions">
-          {dayIdx<LESSONS.length-1&&<button className="btn btn-primary" onClick={()=>startDay(dayIdx+1)}>Day {dayIdx+2} शुरू करें →</button>}
+          {nextLesson&&<button className="btn btn-primary" onClick={()=>startLesson(nextLesson.id)}>Day {nextLesson.order} शुरू करें →</button>}
           <button className="btn btn-ghost" onClick={()=>setScreen("home")}>होम — सभी दिन देखें</button>
-          <button className="btn btn-ghost" onClick={()=>startDay(dayIdx)}>यह दिन दोबारा करें</button>
+          <button className="btn btn-ghost" onClick={()=>startLesson(L.id)}>यह दिन दोबारा करें</button>
         </div>
       </div>}
     </div>
