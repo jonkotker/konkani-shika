@@ -2,6 +2,37 @@ const SUPABASE_URL = "https://vyurftslyadgimobxcda.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_IRChBzmkFgMrBWbq1GcLsA_Mm9VlSwc";
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+// Merge two progress snapshots, keeping whichever side is more advanced per-field
+// rather than blindly trusting one side — protects against a stale/empty cloud
+// copy silently overwriting real local progress (or vice versa).
+function mergeProgress(local, cloud) {
+  const merged = { ...local };
+  Object.keys(cloud || {}).forEach(key => {
+    if (key === "srs") {
+      const localSrs = local.srs || {};
+      const cloudSrs = cloud.srs || {};
+      const mergedSrs = { ...localSrs };
+      Object.keys(cloudSrs).forEach(id => {
+        const c = cloudSrs[id], l = localSrs[id];
+        if (!l || (c.reps ?? 0) > (l.reps ?? 0) || new Date(c.dueDate) > new Date(l.dueDate)) {
+          mergedSrs[id] = c;
+        }
+      });
+      merged.srs = mergedSrs;
+    } else if (key === "onboarded") {
+      merged.onboarded = local.onboarded || cloud.onboarded;
+    } else {
+      const c = cloud[key], l = local[key];
+      if (!l) merged[key] = c;
+      else if (c && ((c.score ?? 0) > (l.score ?? 0) ||
+               (c.completedAt && l.completedAt && new Date(c.completedAt) > new Date(l.completedAt)))) {
+        merged[key] = c;
+      }
+    }
+  });
+  return merged;
+}
+
 function App() {
   const [user, setUser] = React.useState(null);
   const [authLoading, setAuthLoading] = React.useState(true);
@@ -35,8 +66,12 @@ function App() {
       .then(({ data, error }) => {
         if (error) console.error("Supabase read failed:", error);
         if (data && data.data) {
-          setProgress(data.data);
-          try { localStorage.setItem("konkani-progress", JSON.stringify(data.data)); } catch(e) {}
+          const merged = mergeProgress(progress, data.data);
+          setProgress(merged);
+          try { localStorage.setItem("konkani-progress", JSON.stringify(merged)); } catch(e) {}
+          sb.from("progress").upsert({ user_id: user.id, data: merged }).then(({ error }) => {
+            if (error) console.error("Supabase merge push failed:", error);
+          });
         } else {
           sb.from("progress").upsert({ user_id: user.id, data: progress }).then(({ error }) => {
             if (error) console.error("Supabase initial push failed:", error);
