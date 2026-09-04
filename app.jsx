@@ -374,6 +374,10 @@ function App() {
           <div className="flip-front-hint" style={{marginBottom:16}}>इसे Konkani में Roman letters में टाइप करें</div>
           <input
             type="text"
+            autoCorrect="off"
+            autoCapitalize="off"
+            autoComplete="off"
+            spellCheck="false"
             value={typedValue}
             disabled={typeSubmitted}
             onChange={e=>setTypedValue(e.target.value)}
